@@ -1,1 +1,64 @@
 // Specific CSS for your home-page
+// Specific CSS for your home-page
+h1 {
+  font-family: nunito;
+  font-size: 60px;
+  color: white;
+}
+
+.content {
+  text-align: center;
+}
+
+.content h1{
+  font-size: 60px;
+  color: white;
+  font-weight: 600;
+}
+
+.content a {
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  font-size: 24px;
+  border: 2px solid white;
+  padding: 14px;
+  border-radius: 20px;
+  margin-top: 20px;
+
+}
+
+// .hero {
+//   width: 100%;
+//   height: 100vh;
+//   background-image: linear-gradient(rgba(12,3,51,0.3), rgba(12,3,51,0.3));
+//   position: relative;
+//   padding: 0 5%;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+
+// }
+
+#back-video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+// body {
+//   background-image: url('home.jpg');
+//   background-size: cover;
+//   background-repeat: no-repeat;
+// }
