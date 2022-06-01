@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :schedules, only: [:index, :new, :create, :destroy, :show]
   resources :games, only: [:index, :new, :create, :show]
   resources :teams, only: [:index, :new, :create, :show]
+  resources :users
 end
