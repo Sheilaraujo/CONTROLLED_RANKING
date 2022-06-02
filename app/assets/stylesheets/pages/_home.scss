@@ -4,6 +4,7 @@ h1 {
   font-family: nunito;
   font-size: 60px;
   color: white;
+  margin-top: 200px;
 }
 
 .content {
@@ -20,12 +21,15 @@ h1 {
   text-decoration: none;
   display: inline-block;
   color: white;
-  font-size: 24px;
+  font-size: 20px;
   border: 2px solid white;
-  padding: 14px;
-  border-radius: 20px;
-  margin-top: 20px;
-
+  padding: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 15px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 // .hero {
