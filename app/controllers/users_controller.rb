@@ -8,9 +8,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = current_user.id
+    @user = current_user
     @user.update!(user_params)
-    redirect_to current_user.id
+    redirect_to current_user
   end
 
   private
