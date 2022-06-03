@@ -6,7 +6,7 @@
       <%= f.input :name %>
       <%= f.input :last_name %>
       <%= f.input :about_me %>
-      <%= f.input :difficulty %>
+      <%= f.input :difficulty, priority: [ "Iniciante" ], collection: [ "Iniciante", "C", "B", "A", "Pro"] %>
       <%= f.input :email %>
       <%= f.button :submit %>
     <% end %>
