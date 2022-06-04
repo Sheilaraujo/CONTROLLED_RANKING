@@ -5,27 +5,27 @@
   margin-top: 50px;
   border-radius: 25px;
   color: white;
+  margin-right:10px;
 }
 
 h2 {
   color: white;
   font-family: "montserrat";
-  font-weight: 400;
+  font-weight: 700;
   padding: 20px;
 }
 
 .header {
-  color: #FF4802;
+  color: black;
   font-family: "montserrat";
   margin-top: 50px;
   font-weight: 400;
 }
 
 h3 {
-  color: #FF4802;
+  color: black;
   font-family: "montserrat";
-  font-weight: 400;
-  font-style: bold;
+  font-weight: 600;
 }
 
 body {
@@ -34,4 +34,14 @@ body {
 
 p {
   margin-left: 20px;
+}
+
+.back-show-2 {
+  background-color: #623CEA;
+  height: 250px;
+  width: 600px;
+  margin-top: 50px;
+  border-radius: 25px;
+  color: white;
+  margin-left: 10px;
 }
