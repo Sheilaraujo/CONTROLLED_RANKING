@@ -6,10 +6,12 @@
     <% agora = Time.new %>
     <% hoje = agora.strftime("%d/%m/%Y") %>
     <!-- como salvar data inicial e data final no campo date? -->
-      <%= simple_form_for :search, method: "get" do |f| %>
-        <%= f.input :Dia_inicial, as: :string, placeholder: hoje, input_html: {class: "datepicker"} %>
-        <%= f.input :Dia_final, as: :string, placeholder: hoje, input_html: {class: "datepicker"} %>
-        <%= f.input :Local, include_blank: false, collection: ['Rio de Janeiro', 'São Paulo'] %>
+      <%# <%= simple_form_for :search, method: "get" do |f| %>
+      <%= simple_form_for @schedule do |f| %>
+        <%= f.input :date, as: :string, placeholder: hoje, input_html: {class: "datepicker"} %>
+        <%# <%= f.input :Dia_final, as: :string, placeholder: hoje, input_html: {class: "datepicker"} %>
+        <%= f.input :place, include_blank: false, collection: ['Rio de Janeiro', 'São Paulo'] %>
+        <%= f.input :user_id, input_html: { value: current_user.id }, as: :hidden %>
         <%= f.button :submit, "Confirmar", class: "btn btn-primary" %>
       <% end %>
     </div>

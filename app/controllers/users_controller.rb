@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = current_user.id
+    @schedules = Schedule.all
   end
 
   def edit
