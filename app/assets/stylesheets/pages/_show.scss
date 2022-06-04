@@ -1,5 +1,5 @@
 .back-show {
-  background-color: #94CF01;
+  background-color: #D2E603;
   height: 250px;
   width: 600px;
   margin-top: 50px;
@@ -7,6 +7,40 @@
   color: white;
   margin-right:10px;
 }
+
+.back-show-2 {
+  background-color: #2EC1AC;
+  height: 250px;
+  width: 600px;
+  margin-top: 50px;
+  border-radius: 25px;
+  color: white;
+  margin-left: 10px;
+}
+
+.back-show-3 {
+  background-color: #3E978B;
+  height: 250px;
+  width: 600px;
+  margin-top: 20px;
+  border-radius: 25px;
+  color: white;
+  margin-right:10px;
+  margin-bottom: 50px;
+}
+
+.back-show-4 {
+  background-color: #599890;
+  height: 250px;
+  width: 600px;
+  margin-top: 20px;
+  border-radius: 25px;
+  color: white;
+  margin-left: 10px;
+  margin-bottom: 50px;
+}
+
+// EFF48E
 
 h2 {
   color: white;
@@ -45,16 +79,6 @@ p-2 {
   font-family: cabin;
 }
 
-.back-show-2 {
-  background-color: #623CEA;
-  height: 250px;
-  width: 600px;
-  margin-top: 50px;
-  border-radius: 25px;
-  color: white;
-  margin-left: 10px;
-}
-
 a {
   text-decoration: none;
   color: white;
@@ -63,24 +87,4 @@ a {
 a:hover {
   text-decoration: none;
   color: white;
-}
-
-.back-show-3 {
-  background-color: orange;
-  height: 250px;
-  width: 600px;
-  margin-top: 50px;
-  border-radius: 25px;
-  color: white;
-  margin-left: 10px;
-}
-
-.back-show-4 {
-  background-color: grey;
-  height: 250px;
-  width: 600px;
-  margin-top: 50px;
-  border-radius: 25px;
-  color: white;
-  margin-left: 10px;
 }
