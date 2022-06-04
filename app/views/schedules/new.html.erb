@@ -1,0 +1,17 @@
+<div class="container mt-3">
+  <div class="form-wrapper" style="width: 800px; margin: 0 auto;">
+    <h1>Minha disponibilidade para jogos</h1>
+    <h2>Quero jogar nestes dias:</h2>
+    <div class= "col-schedule" class="col-3">
+    <% agora = Time.new %>
+    <% hoje = agora.strftime("%d/%m/%Y") %>
+    <!-- como salvar data inicial e data final no campo date? -->
+      <%= simple_form_for :search, method: "get" do |f| %>
+        <%= f.input :Dia_inicial, as: :string, placeholder: hoje, input_html: {class: "datepicker"} %>
+        <%= f.input :Dia_final, as: :string, placeholder: hoje, input_html: {class: "datepicker"} %>
+        <%= f.input :Local, include_blank: false, collection: ['Rio de Janeiro', 'São Paulo'] %>
+        <%= f.button :submit, "Confirmar", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
