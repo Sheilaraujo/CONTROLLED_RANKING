@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_04_195158) do
+ActiveRecord::Schema.define(version: 2022_06_04_202222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
-    t.integer "result"
     t.bigint "team_id", null: false
     t.date "date"
     t.string "place"
@@ -24,6 +23,7 @@ ActiveRecord::Schema.define(version: 2022_06_04_195158) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "winner", default: false
     t.bigint "schedule_id", null: false
+    t.string "result"
     t.index ["schedule_id"], name: "index_games_on_schedule_id"
     t.index ["team_id"], name: "index_games_on_team_id"
   end
