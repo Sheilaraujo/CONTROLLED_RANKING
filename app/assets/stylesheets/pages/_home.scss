@@ -18,11 +18,11 @@ h1 {
 }
 
 .content a {
-  font-family: cabin;
+  font-family: Helvetica;
   text-decoration: none;
   display: inline-block;
   color: white;
-  background-color: rgba(0, 0, 0, 0.485) ;
+  background-color: rgba(0, 0, 0, 0.257) ;
   font-size: 18px;
   // border: 1px solid white;
   padding: 5px;
@@ -35,8 +35,29 @@ h1 {
 
 }
 
-a:hover {
-  background-color: rgba(0, 0, 0, 0.485)
+// a:hover {
+//   background-color: rgba(0, 0, 0, 0.459) ;
+// }
+
+.a2 {
+  font-family: Helvetica;
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.257) ;
+  font-size: 18px;
+  // border: 1px solid white;
+  padding: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.a2:hover {
+  background-color: rgba(0, 0, 0, 0.459) ;
 }
 
 // .hero {

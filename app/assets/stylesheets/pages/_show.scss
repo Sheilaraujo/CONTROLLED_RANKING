@@ -75,7 +75,8 @@ p {
   font-family: montserrat;
 }
 
-p-2 {
+.p-2 {
+  margin-left: 20px;
   font-family: cabin;
 }
 
@@ -87,4 +88,9 @@ a {
 a:hover {
   text-decoration: none;
   color: white;
+}
+
+.a-3 {
+  text-decoration: none;
+  color: rgb(161, 25, 25);
 }
