@@ -1,34 +1,33 @@
 class SchedulesController < ApplicationController
-    def index
-        @schedule = Schedule.all
+  def index
+    @schedule = Schedule.all
+  end
+
+  def new
+    @schedule = Schedule.new
+  end
+
+  def create
+    @schedule = Schedule.new(schedule_params)
+    if @schedule.save
+      redirect_to schedule_path(:new)
+    else
+      render :new
     end
+  end
 
-    def new
-        @schedule = Schedule.new
-    end
+  def show
+    @schedule = Schedule.find(params[:id])
+  end
 
-    def create
-        @schedule = Schedule.new(schedule_params)
-        if @schedule.save
-            redirect_to schedule_path(@schedule)
-        else
-            render :new
-        end
-    end
+  def destroy
+    @schedule.destroy
+    render :new
+  end
 
-    def show
-        @schedule = Schedule.find(params[:id])
-    end
+  private
 
-    def destroy
-        @schedule.destroy
-        render :new
-    end
-
-    private
-
-    def schedule_params
-        params.require(:schedule).permit(:date, :place, :user_id)
-    end
-
+  def schedule_params
+    params.require(:schedule).permit(:date, :place, :user_id)
+  end
 end
