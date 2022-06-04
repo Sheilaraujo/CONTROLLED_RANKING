@@ -1,8 +1,13 @@
-<h2>Users#show</h2>
-<%= current_user.id %>
-<%= current_user.name %>
-<%= current_user.last_name %>
-<%= current_user.about_me %>
-<%= current_user.difficulty %>
-<%= current_user.email %>
-<%= link_to "Edit", edit_user_path %>
+<div class="container header">
+  <h3><strong><%= current_user.name %> <%= current_user.last_name %><strong></h3>
+  <%= current_user.difficulty %>
+    <div class="container">
+      <div class="back-show">
+        <h2><strong>Meu perfil</strong></h2>
+        <p><%= current_user.about_me %><p>
+        <br>
+        <br>
+        <%= link_to "Editar perfil", edit_user_path %>
+      </div>
+    </div>
+</div>
