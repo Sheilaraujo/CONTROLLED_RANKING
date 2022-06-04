@@ -30,7 +30,10 @@ h3 {
 }
 
 body {
+  // background-image: url(https://res.cloudinary.com/dngytfadz/image/upload/v1654361791/ball_goln0x.png);
   background-color: white;
+  // background-repeat: no-repeat;
+
 }
 
 p {
@@ -50,4 +53,14 @@ p-2 {
   border-radius: 25px;
   color: white;
   margin-left: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  text-decoration: none;
+  color: white;
 }
