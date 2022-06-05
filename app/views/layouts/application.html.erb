@@ -15,7 +15,12 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
+    <div class="container">
+      <% if notice.present? %>
+        <p class="alert alert-success" style="color: green"><%= notice %></p>
+      <% end %>
+      <%= yield %>
+    </div>
 
-    <%= yield %>
   </body>
 </html>

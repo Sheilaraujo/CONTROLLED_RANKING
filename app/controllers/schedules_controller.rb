@@ -9,10 +9,13 @@ class SchedulesController < ApplicationController
 
   def create
     @schedule = Schedule.new(schedule_params)
-    if @schedule.save
-      redirect_to schedule_path(:new)
-    else
-      render :new
+    respond_to do |format|
+      if @schedule.save
+        format.html { redirect_to schedule_path(:new), notice: "Schedule was successfully created." }
+      else
+        binding.pry
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
   end
 
