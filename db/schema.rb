@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_04_145707) do
+ActiveRecord::Schema.define(version: 2022_06_07_213934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
-    t.integer "result"
     t.bigint "team_id", null: false
     t.date "date"
     t.string "place"
@@ -24,8 +23,19 @@ ActiveRecord::Schema.define(version: 2022_06_04_145707) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "winner", default: false
     t.bigint "schedule_id", null: false
+    t.string "result"
     t.index ["schedule_id"], name: "index_games_on_schedule_id"
     t.index ["team_id"], name: "index_games_on_team_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "to"
+    t.string "subject"
+    t.string "body"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "schedules", force: :cascade do |t|
@@ -34,7 +44,8 @@ ActiveRecord::Schema.define(version: 2022_06_04_145707) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "partner"
+    t.jsonb "partner", default: {}, null: false
+    t.index ["partner"], name: "index_schedules_on_partner", using: :gin
     t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
@@ -44,10 +55,10 @@ ActiveRecord::Schema.define(version: 2022_06_04_145707) do
     t.integer "score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
     t.bigint "schedule_id", null: false
+    t.bigint "game_id", null: false
+    t.index ["game_id"], name: "index_teams_on_game_id"
     t.index ["schedule_id"], name: "index_teams_on_schedule_id"
-    t.index ["user_id"], name: "index_teams_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -69,7 +80,8 @@ ActiveRecord::Schema.define(version: 2022_06_04_145707) do
 
   add_foreign_key "games", "schedules"
   add_foreign_key "games", "teams"
+  add_foreign_key "messages", "users"
   add_foreign_key "schedules", "users"
+  add_foreign_key "teams", "games"
   add_foreign_key "teams", "schedules"
-  add_foreign_key "teams", "users"
 end

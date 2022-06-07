@@ -6,6 +6,7 @@
 
   <div class="form-inputs">
     <%= f.input :email,
+                label: "E-mail",
                 required: true,
                 autofocus: true,
                 value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
@@ -13,7 +14,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Resend confirmation instructions" %>
+    <%= f.button :submit, "Reenviar instruções de confirmação" %>
   </div>
 <% end %>
 

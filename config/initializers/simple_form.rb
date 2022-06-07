@@ -159,6 +159,17 @@ SimpleForm.setup do |config|
 
   # Default class for inputs
   # config.input_class = nil
+  # Cintia inseriu uma classe para f.input
+  # div.input{
+  #   margin-bottom : 10px;
+  # }
+  # input.radio_buttons, input.check_boxes {
+  #   margin-right : 5px:
+  # }
+  # .btn {
+  #   margin-left: $indent;
+  # }
+
 
   # Define the default class of the input wrapper of the boolean input.
   config.boolean_label_class = 'checkbox'

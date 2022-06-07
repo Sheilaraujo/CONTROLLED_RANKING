@@ -1,17 +1,29 @@
 <div class="container mt-3">
-  <div class="form-wrapper" style="width: 800px; margin: 0 auto;">
-    <h1>Minha disponibilidade para jogos</h1>
-    <h2>Quero jogar nestes dias:</h2>
-    <div class= "col-schedule" class="col-3">
-    <% agora = Time.new %>
-    <% hoje = agora.strftime("%d/%m/%Y") %>
-    <!-- como salvar data inicial e data final no campo date? -->
-      <%= simple_form_for :search, method: "get" do |f| %>
-        <%= f.input :Dia_inicial, as: :string, placeholder: hoje, input_html: {class: "datepicker"} %>
-        <%= f.input :Dia_final, as: :string, placeholder: hoje, input_html: {class: "datepicker"} %>
-        <%= f.input :Local, include_blank: false, collection: ['Rio de Janeiro', 'São Paulo'] %>
-        <%= f.button :submit, "Confirmar", class: "btn btn-primary" %>
-      <% end %>
-    </div>
+  <%#  %>
+  <div class="form-wrapper" style="width: 800px; margin: 0 auto; background-color: orange">
+    <h2>Minha disponibilidade para jogos</h2>
+    <h3>Quero jogar neste dia:</h3>
+    <%# <%= form_with(model: schedule, html: { data: { controller: "masks" } }) do |form| %>
+      <div class="col-6">
+        <%# Antes de gravar, TEM QUE VALIDAR SE A DATA+LOCAL já existem na tabela Schedules %>
+        <% agora = Time.new %>
+        <% hoje_dmy = agora.strftime("%d/%m/%Y") %>
+        <% hoje_ymd = agora.strftime("%Y/%m/%d") %>
+        <%#= "hoje_dmy:#{hoje_dmy} hoje_ymd:#{hoje_ymd}" %>
+        <%= simple_form_for @schedule do |f| %>
+            <div class="row">
+              <div class="col-6 card p-3" style="width: 12rem; margin-left: 20px;">
+                <%= f.input :date, as: :string, priority: hoje_dmy, label:'Dia', style: "display: block", input_html: {class: "datepicker", value: hoje_ymd } %>
+                <%# <%= errors_for(form, :date) %>
+              </div>
+              <div class="col-6 card p-3">
+                <%= f.input :place, include_blank: false, label: 'Local', style: "display: block", collection: ['Rio de Janeiro', 'São Paulo'] %>
+              </div>
+            </div>
+            <%= f.input :user_id, input_html: { value: current_user.id }, as: :hidden %>
+            <%= f.button :submit, "Confirmar", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    <%# <% end %>
   </div>
 </div>
