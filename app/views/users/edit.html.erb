@@ -1,30 +1,43 @@
 <div class="container mt-3" >
-  <%# <div class="container mt-3" class="d-flex" style="width: 800px;"> background-color: orange"%>
    <h2>Editar meus dados cadastrais</h2>
-   <form class="form-inline">
     <div class="form-group">
+      <%= simple_form_for current_user do |f| %>
+        <div class="row " >
+          <div class=" col-lg-6" class="form-control">
+            <%= f.input :name, label:'Nome' %>
+          </div>
+          <div class="  col-lg-6" class="form-control">
+            <%= f.input :last_name, label:'Sobrenome' %>
+          </div>
+          <div class="  col-lg-12" class="form-control">
+            <%= f.input :email, label:'E-mail', placeholder: "nome@dominio.com" %>
+          </div>
+          <div class=" col-lg-12" class="form-control">
+            <%= f.input :about_me, label:'Uma breve descrição sobre você', placeholder: "onde mora, em quais dias prefere jogar" %>
+          </div>
+          <div class="  col-lg-12" class="form-control">
+            <%= f.input :difficulty,as: :radio_buttons, label:'Nível', checked: [ "Iniciante" ], collection: [ "Iniciante", "C", "B", "A", "Pro"] %>
+          </div>
+          </div class=" col-lg-8" class="form-control">
+            <%= f.button :submit, "Confirmar", class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div>
+
+<!--
+<div class="container">
+  <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+    <h2>Edit Profile</h2>
+
     <%= simple_form_for current_user do |f| %>
-      <div class="row " >
-        <div class=" col-lg-6" class="form-control">
-          <%= f.input :name,      as: :string,      label:'Nome' %>
-        </div>
-        <div class="  col-lg-6" class="form-control">
-          <%= f.input :last_name, as: :string,      label:'Sobrenome' %>
-        </div>
-        <div class="  col-lg-12" class="form-control">
-          <%= f.input :email,     as: :string,      label:'E-mail', placeholder: "nome@dominio.com" %>
-        </div>
-        <div class=" col-lg-12" class="form-control">
-          <%= f.input :about_me,  as: :string,       label:'Uma breve descrição sobre você', placeholder: "onde mora, em quais dias prefere jogar" %>
-        </div>
-        <div class="  col-lg-12" class="form-control">
-          <%= f.input :difficulty,as: :radio_buttons, label:'Nível', checked: [ "Iniciante" ], collection: [ "Iniciante", "C", "B", "A", "Pro"] %>
-        </div>
-        </div class=" col-lg-8" class="form-control">
-          <%= f.button :submit, "Confirmar", class: "btn btn-primary" %>
-        </div>
-      </div>
+      <%= f.input :name %>
+      <%= f.input :last_name %>
+      <%= f.input :about_me %>
+      <%= f.input :difficulty, include_blank: false, priority: [ "Iniciante" ], collection: [ "Iniciante", "C", "B", "A", "Pro"] %>
+      <%= f.input :email %>
+      <%= f.button :submit %>
     <% end %>
   </div>
-  </form>
 </div>
