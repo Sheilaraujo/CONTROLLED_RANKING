@@ -35,34 +35,8 @@ h1 {
 
 }
 
-<<<<<<< HEAD
-// a:hover {
-//   background-color: rgba(0, 0, 0, 0.459) ;
-// }
-
-.a2 {
-  font-family: Helvetica;
-  text-decoration: none;
-  display: inline-block;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.257) ;
-  font-size: 18px;
-  // border: 1px solid white;
-  padding: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-radius: 5px;
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-.a2:hover {
-  background-color: rgba(0, 0, 0, 0.459) ;
-=======
 a:hover {
   background-color: rgba(0, 0, 0, 0.629) ;
->>>>>>> 31c7ab254833ba2bb29c07740608ddc4c337e86b
 }
 
 // .hero {
@@ -99,3 +73,26 @@ a:hover {
 //   background-size: cover;
 //   background-repeat: no-repeat;
 // }
+
+
+.a2 {
+  font-family: Helvetica;
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.257) ;
+  font-size: 18px;
+  // border: 1px solid white;
+  padding: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.a2:hover {
+  background-color: rgba(0, 0, 0, 0.459) ;
+
+}
