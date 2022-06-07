@@ -1,0 +1,24 @@
+<h1>New Message</h1>
+
+<h3><%= notice %></h3>
+
+<%= form_with model: @message, url: messages_path do |form| %>
+  <div class="field">
+    <%= form.label :to %>
+    <%= form.select :to, User.all.pluck(:email), include_blank: "Select a recipient" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :subject %>
+    <%= form.text_field :subject %>
+  </div>
+
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

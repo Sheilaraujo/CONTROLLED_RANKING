@@ -7,7 +7,7 @@
 //   <h1 data-target="hello.output"></h1>
 // </div>
 
-// vou desconsiderar este código padrão
+
 import { Controller } from "stimulus"
 
 export default class extends Controller {
@@ -20,6 +20,9 @@ export default class extends Controller {
 
 // vou testar este código para organizar o simple_form horizontal
 // mas acho que este código serve apenas para a mask do CPF
+// ass.:Cintia
+// com o código que copiei, não aparece o calendário
+// Vou voltar para o original
 // window.$ = window.jQuery = require('jquery');
 // require("jquery-mask-plugin");
 

@@ -1,0 +1,63 @@
+# para este formulario inline funcionar teria que instalar o boot strap de outra forma
+# seguindo as orientacoes deste site, mas nao fiz
+# https://stackoverflow.com/questions/35733167/simple-form-form-inline-not-working
+#
+# CONTROLLED_RANKING git:(schedule-dia6)  rails generate simple_form:install --bootstrap
+# Running via Spring preloader in process 3697
+#     conflict  config/initializers/simple_form.rb
+# Overwrite /root/code/CintiaPizzatto/CONTROLLED_RANKING/config/initializers/simple_form.rb? (enter "h" for help) [Ynaqdhm] n
+#         skip  config/initializers/simple_form.rb
+#    identical  config/initializers/simple_form_bootstrap.rb
+#        exist  config/locales
+#    identical  config/locales/simple_form.en.yml
+#    identical  lib/templates/erb/scaffold/_form.html.erb
+# ===============================================================================
+
+#   Be sure to have a copy of the Bootstrap stylesheet available on your
+#   application, you can get it on http://getbootstrap.com/.
+
+#   For usage examples and documentation, see:
+
+#     https://simple-form-bootstrap.herokuapp.com
+
+# ===============================================================================
+
+# ass.: Cintia
+
+# neste site tambem fala desta mesma nova instalacao de bootstrap
+# rails generate simple_form:install --bootstrap
+# https://github.com/heartcombo/simple_form
+
+<div class="container">
+<%# <div class="container mt-3" class="d-flex" style="width: 800px;" class="form-group"> %>
+
+  <%# <div  style="width: 800px; background-color: orange"> %>
+    <h2>Editar meus dados cadastrais</h2>
+      <%# <div class="col-5 col-lg-5 card p-3" style="margin-left: 10px;"> %>
+    <form class="form-inline">
+    <div class="form-group">
+    <%= simple_form_for current_user do |f| %>
+      <%# <div class="row justify-content-center" > %>
+        <div class=" " class="form-control">
+          <%= f.input :name,      as: :string,      label:'Nome' %>
+        </div>
+        <div class="  " class="form-control">
+          <%= f.input :last_name, as: :string,      label:'Sobrenome' %>
+        </div>
+        <div class="  " class="form-control">
+          <%= f.input :email,     as: :string,      label:'E-mail', placeholder: "nome@dominio.com" %>
+        </div>
+        <div class=" " class="form-control">
+          <%= f.input :about_me,  as: :string,       label:'Uma breve descrição sobre você', placeholder: "onde mora, em quais dias prefere jogar" %>
+        </div>
+        <div class="  " class="form-control">
+          <%= f.input :difficulty,as: :radio_buttons, label:'Nível', checked: [ "Iniciante" ], collection: [ "Iniciante", "C", "B", "A", "Pro"] %>
+        </div>
+        </div class=" " class="form-control">
+          <%= f.button :submit, "Confirmar", class: "btn btn-primary" %>
+        </div>
+      <%# </div> %>
+    <% end %>
+    </div>
+  </form>
+</div>

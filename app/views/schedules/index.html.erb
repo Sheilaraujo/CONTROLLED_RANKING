@@ -1,10 +1,9 @@
  <div>
   <h1>Minha dupla e meus adversários</h1>
-  <%  "Meu user_id = #{user.user_id} - #{user.name}" %>
 
     <ul>
       <% @schedules.each do |schedule|%>
-        <% if (schedule.user_id == user.user_id) then %>
+        <% if schedule.user_id == current_user.id %>
           <li><%= "#{schedule.date} - #{schedule.place} - Parceiros: 1-#{schedule.partner[0]} 2-#{schedule.partner[0]} 3-#{schedule.partner[0]}" %></li>
         <% end %>
       <% end %>
