@@ -1,8 +1,11 @@
 <div class="container mt-3">
   <%#  %>
-  <div class="form-wrapper" style="width: 800px; margin: 0 auto; background-color: orange">
-    <h2>Minha disponibilidade para jogos</h2>
-    <h3>Quero jogar neste dia:</h3>
+  <h3><br>Minha disponibilidade para jogos</h3>
+  <br>
+  <br>
+  <div class="form-wrapper" style="border-radius: 25px; width: 800px; background-color: #FF9914">
+    <%# <h2>Minha disponibilidade para jogos</h2> %>
+    <h2>Quero jogar neste dia:</h2>
     <%# <%= form_with(model: schedule, html: { data: { controller: "masks" } }) do |form| %>
       <div class="col-6">
         <%# Antes de gravar, TEM QUE VALIDAR SE A DATA+LOCAL já existem na tabela Schedules %>
@@ -21,7 +24,7 @@
               </div>
             </div>
             <%= f.input :user_id, input_html: { value: current_user.id }, as: :hidden %>
-            <%= f.button :submit, "Confirmar", class: "btn btn-primary" %>
+            <%= f.button :submit, "Confirmar", class: "a3" %>
         <% end %>
       </div>
     <%# <% end %>
