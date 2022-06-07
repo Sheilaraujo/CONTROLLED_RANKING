@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_04_202222) do
+ActiveRecord::Schema.define(version: 2022_06_07_213934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,13 +28,24 @@ ActiveRecord::Schema.define(version: 2022_06_04_202222) do
     t.index ["team_id"], name: "index_games_on_team_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.string "to"
+    t.string "subject"
+    t.string "body"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "schedules", force: :cascade do |t|
     t.date "date"
     t.string "place"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "partner"
+    t.jsonb "partner", default: {}, null: false
+    t.index ["partner"], name: "index_schedules_on_partner", using: :gin
     t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
@@ -69,6 +80,7 @@ ActiveRecord::Schema.define(version: 2022_06_04_202222) do
 
   add_foreign_key "games", "schedules"
   add_foreign_key "games", "teams"
+  add_foreign_key "messages", "users"
   add_foreign_key "schedules", "users"
   add_foreign_key "teams", "games"
   add_foreign_key "teams", "schedules"

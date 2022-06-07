@@ -13,7 +13,7 @@ class SchedulesController < ApplicationController
       if @schedule.save
         format.html { redirect_to schedule_path(:new), notice: "Schedule was successfully created." }
       else
-        binding.pry
+        # binding.pry
         format.html { render :new, status: :unprocessable_entity }
       end
     end
