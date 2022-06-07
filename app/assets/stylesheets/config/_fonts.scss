@@ -4,9 +4,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Ubuntu&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Ubuntu&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
+
 // Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif", "Ubuntu", "Permanent Marker", "Bebas Neue", "cursive", "Montserrat";
-$headers-font: "Nunito", "Helvetica", "sans-serif", "Ubuntu", "Permanent Marker", "Bebas Neue", "cursive", "Montserrat";
+$body-font: "Work Sans", "Helvetica", "sans-serif", "Ubuntu", "Permanent Marker", "Bebas Neue", "cursive", "Montserrat", "Cabin";
+$headers-font: "Nunito", "Helvetica", "sans-serif", "Ubuntu", "Permanent Marker", "Bebas Neue", "cursive", "Montserrat", "Cabin";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {

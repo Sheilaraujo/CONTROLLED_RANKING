@@ -1,14 +1,23 @@
-<h2>Users#show</h2>
-<%= current_user.id %>
-<%= current_user.name %>
-<%= current_user.last_name %>
-<%= current_user.about_me %>
-<%= current_user.difficulty %>
-<%= current_user.email %>
-<%= link_to "Edit", edit_user_path %>
-<%= @schedules[0].date %>
-<%= @schedules[1].date %>
-<%= @schedules[2].date %>
-<%= @schedules[3].date %>
-<%= @schedules[4].date %>
-<%= @schedules[5].date %>
+<div class="container header">
+  <h3><strong><%= current_user.name %> <%= current_user.last_name %><strong></h3>
+  <p-2>Categoria: <p-2><%=current_user.difficulty %>
+    <div class="container">
+      <div class="row">
+        <div class="back-show col-md-6">
+          <h2>Sobre mim</h2>
+          <p><%= current_user.about_me %><p>
+          <br>
+          <br>
+          <a class="a-3"><%= link_to "Editar perfil", edit_user_path %></a>
+        </div>
+        <div class="back-show-2 col-md-6">
+          <h2>Últimos jogos</h2>
+        </div>
+        <div class="back-show-3 col-md-6">
+          <h2>Calendário</h2>
+        </div>
+        <div class="back-show-4 col-md-6">
+          <h2>Adversários disponíveis</h2>
+        </div>
+    </div>
+</div>
