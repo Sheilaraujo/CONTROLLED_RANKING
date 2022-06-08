@@ -15,16 +15,18 @@
           <%#= "hoje_dmy:#{hoje_dmy} hoje_ymd:#{hoje_ymd}" %>
           <%= simple_form_for @schedule do |f| %>
               <div class="row">
-                <div class="col-6 card p-3" style="width: 12rem; margin-left: 20px;">
+                <div class="col-6 " style="width: 12rem; margin-left: 20px; ">
                   <%= f.input :date, as: :string, priority: hoje_dmy, label:'Dia', style: "display: block", input_html: {class: "datepicker", value: hoje_ymd } %>
                   <%# <%= errors_for(form, :date) %>
                 </div>
-                <div class="col-6 card p-3">
+                <div class="col-6 ">
                   <%= f.input :place, include_blank: false, label: 'Local', style: "display: block", collection: ['Rio de Janeiro', 'São Paulo'] %>
                 </div>
               </div>
-              <%= f.input :user_id, input_html: { value: current_user.id }, as: :hidden %>
-              <%= f.button :submit, "Confirmar", class: "a3", mb:"5px" %>
+                <div class="col-6">
+                  <%= f.input :user_id, input_html: { value: current_user.id }, as: :hidden %>
+                  <%= f.button :submit, "Confirmar", class: "a3", ml:"5px", mb:"5px" %>
+                </div>
           <% end %>
         </div>
       <%# <% end %>
