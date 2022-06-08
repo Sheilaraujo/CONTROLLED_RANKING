@@ -10,20 +10,21 @@
 # Team.create(player_1: , player_2: , score: , game_id: )
 
 # User.create(password: "123456", email: "cd@g.com", name: "Carla",   last_name: "Dias",
-# about_me: "jogo pouco", difficulty: "A", user_score: 0>,
+# about_me: "jogo pouco", difficulty: "A", user_score: 0)
 # User.create(password: "123456", email: "ml@g.com", name: "Marcelo", last_name: "Lima",
-# about_me: "só posso jogar aos sábados", difficulty: "A", user_score: 0>,
+# about_me: "só posso jogar aos sábados", difficulty: "A", user_score: 0)
 # User.create(password: "123456", email: "lg@g.com", name: "Luis",    last_name: "Gama",
-# about_me: "sou de Curitiba", difficulty: "B", user_score: 0>,
+# about_me: "sou de Curitiba", difficulty: "B", user_score: 0)
 # User.create(password: "123456", email: "md@g.com", name: "Michele", last_name: "Dantas",
-# about_me: "jogo muito!", difficulty: "B", user_score: 0>,
+# about_me: "jogo muito!", difficulty: "B", user_score: 0)
 # User.create(password: "123456", email: "dc@d.com", name: "Davi",    last_name: "Castro",
-# about_me: "jogo devagar", difficulty: "B", user_score: 0>,
+# about_me: "jogo devagar", difficulty: "B", user_score: 0)
 # User.create(password: "123456", email: "lf@g",     name: "Lucas",   last_name: "Fernandes",
-# about_me: "jogo rápido", difficulty: "A", user_score: 0>,
+# about_me: "jogo rápido", difficulty: "A", user_score: 0)
 # User.create(password: "123456", email: "vc@g.com", name: "Vanessa", last_name: "Camargo",
-# about_me: "sou do litoral de SP", difficulty: "B", user_score: 10>]
+# about_me: "sou do litoral de SP", difficulty: "B", user_score: 10)
 # User.create(password: "123456", email: "vd@g.com", name: "Vitor",   last_name: "Dias",
 # about_me: "sou de SP capital", difficulty: "A", user_score: 10)
 
-# Schedule.create(date: "Wed, 08 Jun 2022", place: "Rio de Janeiro", user_id: , partners: "[1, 2, 3]")
+Schedule.create(date: "Wed, 08 Jun 2022", place: "Rio de Janeiro", user_id: 1, partner: {duo: 2, opponent_1: 3, opponent_2: 4})
+Schedule.create(date: "Wed, 08 Jun 2022", place: "São Paulo", user_id: 5, partner: {duo: 6, opponent_1: 7, opponent_2: 8})
