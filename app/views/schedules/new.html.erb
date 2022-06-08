@@ -1,29 +1,34 @@
+
 <div class="container mt-3">
-  <%#  %>
-  <div class="form-wrapper" style="width: 800px; margin: 0 auto; background-color: orange">
-    <h2>Minha disponibilidade para jogos</h2>
-    <h3>Quero jogar neste dia:</h3>
-    <%# <%= form_with(model: schedule, html: { data: { controller: "masks" } }) do |form| %>
-      <div class="col-6">
-        <%# Antes de gravar, TEM QUE VALIDAR SE A DATA+LOCAL já existem na tabela Schedules %>
-        <% agora = Time.new %>
-        <% hoje_dmy = agora.strftime("%d/%m/%Y") %>
-        <% hoje_ymd = agora.strftime("%Y/%m/%d") %>
-        <%#= "hoje_dmy:#{hoje_dmy} hoje_ymd:#{hoje_ymd}" %>
-        <%= simple_form_for @schedule do |f| %>
-            <div class="row">
-              <div class="col-6 card p-3" style="width: 12rem; margin-left: 20px;">
-                <%= f.input :date, as: :string, priority: hoje_dmy, label:'Dia', style: "display: block", input_html: {class: "datepicker", value: hoje_ymd } %>
-                <%# <%= errors_for(form, :date) %>
+    <%#  %>
+    <h3><br>Minha disponibilidade para jogos</h3>
+    <br>
+    <div class="form-wrapper" style="border-radius: 25px; width: 800px; height:300px; background-color: #08BDBD">
+      <%# <h2>Minha disponibilidade para jogos</h2> %>
+      <h2>Quero jogar neste dia e local:</h2>
+      <%# <%= form_with(model: schedule, html: { data: { controller: "masks" } }) do |form| %>
+        <div class="col-6">
+          <%# Antes de gravar, TEM QUE VALIDAR SE A DATA+LOCAL já existem na tabela Schedules %>
+          <% agora = Time.new %>
+          <% hoje_dmy = agora.strftime("%d/%m/%Y") %>
+          <% hoje_ymd = agora.strftime("%Y/%m/%d") %>
+          <%#= "hoje_dmy:#{hoje_dmy} hoje_ymd:#{hoje_ymd}" %>
+          <%= simple_form_for @schedule do |f| %>
+              <div class="row">
+                <div class="col-6 " style="width: 12rem; margin-left: 20px; ">
+                  <%= f.input :date, as: :string, priority: hoje_dmy, label:'Dia', style: "display: block", input_html: {class: "datepicker", value: hoje_ymd } %>
+                  <%# <%= errors_for(form, :date) %>
+                </div>
+                <div class="col-6 ">
+                  <%= f.input :place, include_blank: false, label: 'Local', style: "display: block", collection: ['Rio de Janeiro', 'São Paulo'] %>
+                </div>
               </div>
-              <div class="col-6 card p-3">
-                <%= f.input :place, include_blank: false, label: 'Local', style: "display: block", collection: ['Rio de Janeiro', 'São Paulo'] %>
-              </div>
-            </div>
-            <%= f.input :user_id, input_html: { value: current_user.id }, as: :hidden %>
-            <%= f.button :submit, "Confirmar", class: "btn btn-primary" %>
-        <% end %>
-      </div>
-    <%# <% end %>
+                <div class="col-6">
+                  <%= f.input :user_id, input_html: { value: current_user.id }, as: :hidden %>
+                  <%= f.button :submit, "Confirmar", class: "a3", ml:"5px", mb:"5px" %>
+                </div>
+          <% end %>
+        </div>
+      <%# <% end %>
+    </div>
   </div>
-</div>
