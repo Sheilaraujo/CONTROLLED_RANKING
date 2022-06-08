@@ -102,9 +102,9 @@ a:hover {
   text-decoration: none;
   display: inline-block;
   color: white;
-  background-color: grey;
+  background-color: #FF9914;
   font-size: 18px;
-  // border: 1px solid white;
+  border: 1px solid white;
   padding: 5px;
   padding-left: 5px;
   padding-right: 5px;
@@ -114,8 +114,7 @@ a:hover {
   margin-right: 10px;
 }
 
-.a2:hover {
-  background-color: grey;
+.a3:hover {
+  background-color: #dd7d00;
   color: white;
-  text-decoration: none;
 }
