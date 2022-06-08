@@ -2,10 +2,14 @@
   <h1>Minha dupla e meus adversários</h1>
 
     <ul>
-      <% @schedules.each do |schedule|%>
-        <% if schedule.user_id == current_user.id %>
-          <li><%= "#{schedule.date} - #{schedule.place} - Parceiros: 1-#{schedule.partner[0]} 2-#{schedule.partner[0]} 3-#{schedule.partner[0]}" %></li>
-        <% end %>
+      <% @schedules.each do |sched|%>
+        <%# <% if (sched.user_id == current_user.id) then %> %>
+          <li><%= "#{sched.date} - #{sched.place} -
+          Parceiros:
+          1-#{sched.partner["duo"]}
+          2-#{sched.partner["opponent_1"]}
+          3-#{sched.partner["opponent_2"]}" %></li>
+        <%# <% end %> %>
       <% end %>
     </ul>
   </div>
