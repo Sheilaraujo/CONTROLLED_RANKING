@@ -3,13 +3,17 @@
 
     <ul>
       <% @schedules.each do |sched|%>
-        <%# <% if (sched.user_id == current_user.id) then %> %>
-          <li><%= "#{sched.date} - #{sched.place} -
+        <% if (sched.user_id == current_user.id) then %>
+          <%= duo_detail = User.where(id: sched.partner["duo"]).pluck(:name) %>
+          <%= opponent_1_detail = User.where(id: sched.partner["opponent_1"]).pluck(:name) %>
+          <%= opponent_2_detail = User.where(id: sched.partner["opponent_2"]).pluck(:name) %>
+          <li><%= "Current: #{current_user.id} - User_id:#{sched.user_id} - #{sched.date} - #{sched.place} -
           Parceiros:
-          1-#{sched.partner["duo"]}
-          2-#{sched.partner["opponent_1"]}
-          3-#{sched.partner["opponent_2"]}" %></li>
-        <%# <% end %> %>
+          Dupla -#{sched.partner["duo"]}
+          Adversário (1) -#{sched.partner["opponent_1"]}
+          Adversário (2) -#{sched.partner["opponent_2"]}" %></li>
+        <% end %>
       <% end %>
     </ul>
+
   </div>
