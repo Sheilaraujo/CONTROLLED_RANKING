@@ -1,19 +1,21 @@
- <div>
-  <h1>Minha dupla e meus adversários</h1>
+ <div class="container mt-5">
+  <h3>Minha dupla e meus adversários</h3>
 
-    <ul>
-      <% @schedules.each do |sched|%>
-        <% if (sched.user_id == current_user.id) then %>
-          <%= duo_detail = User.where(id: sched.partner["duo"]).pluck(:name) %>
-          <%= opponent_1_detail = User.where(id: sched.partner["opponent_1"]).pluck(:name) %>
-          <%= opponent_2_detail = User.where(id: sched.partner["opponent_2"]).pluck(:name) %>
-          <li><%= "Current: #{current_user.id} - User_id:#{sched.user_id} - #{sched.date} - #{sched.place} -
-          Parceiros:
-          Dupla -#{sched.partner["duo"]}
-          Adversário (1) -#{sched.partner["opponent_1"]}
-          Adversário (2) -#{sched.partner["opponent_2"]}" %></li>
+    <div class="back-show-5 col-md-6">
+      <ul class="font2">
+        <% @schedules.each do |sched|%>
+          <% if (sched.user_id == current_user.id) then %>
+            <%= duo_detail = User.where(id: sched.partner["duo"]).pluck(:name) %>
+            <%= opponent_1_detail = User.where(id: sched.partner["opponent_1"]).pluck(:name) %>
+            <%= opponent_2_detail = User.where(id: sched.partner["opponent_2"]).pluck(:name) %>
+            <li><%= "Current: #{current_user.id} - User_id:#{sched.user_id} - #{sched.date} - #{sched.place} -
+            Parceiros:
+            Dupla -#{sched.partner["duo"]}
+            Adversário (1) -#{sched.partner["opponent_1"]}
+            Adversário (2) -#{sched.partner["opponent_2"]}" %></li>
+          <% end %>
         <% end %>
-      <% end %>
-    </ul>
+      </ul>
+    </div>
 
   </div>
