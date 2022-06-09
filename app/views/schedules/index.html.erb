@@ -2,10 +2,18 @@
   <h1>Minha dupla e meus adversários</h1>
 
     <ul>
-      <% @schedules.each do |schedule|%>
-        <% if schedule.user_id == current_user.id %>
-          <li><%= "#{schedule.date} - #{schedule.place} - Parceiros: 1-#{schedule.partner[0]} 2-#{schedule.partner[0]} 3-#{schedule.partner[0]}" %></li>
+      <% @schedules.each do |sched|%>
+        <% if (sched.user_id == current_user.id) then %>
+          <%= duo_detail = User.where(id: sched.partner["duo"]).pluck(:name) %>
+          <%= opponent_1_detail = User.where(id: sched.partner["opponent_1"]).pluck(:name) %>
+          <%= opponent_2_detail = User.where(id: sched.partner["opponent_2"]).pluck(:name) %>
+          <li><%= "Current: #{current_user.id} - User_id:#{sched.user_id} - #{sched.date} - #{sched.place} -
+          Parceiros:
+          Dupla -#{sched.partner["duo"]}
+          Adversário (1) -#{sched.partner["opponent_1"]}
+          Adversário (2) -#{sched.partner["opponent_2"]}" %></li>
         <% end %>
       <% end %>
     </ul>
+
   </div>
