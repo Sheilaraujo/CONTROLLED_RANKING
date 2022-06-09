@@ -65,3 +65,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # para o campo partner da tabela Schedules
 gem 'activerecord_json_validator'
+
+gem 'pg_search', '~> 2.3.0'
