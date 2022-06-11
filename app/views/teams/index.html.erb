@@ -1,1 +1,52 @@
-<h1>Teste</h1>
+ <div class="container mt-5">
+  <h3>Consultar disponibilidade de jogos de outros jogadores</h3>
+  <!-- <div class="col-md-6 font-small" style="flex-container">
+    <div class="back-show-6 col-md-6 font2"> -->
+  <div >
+    <div>
+      <div class="table-responsive">
+      <table class="table table-hover table-sm table-active ">
+        <caption>Lista de jogos de outros jogadores</caption>
+        <thead class="thead-dark">
+            <tr>
+              <th scope="col">Organizador</th>
+              <th scope="col">Nível</th>
+              <th scope="col">Data</th>
+              <th scope="col">Local</th>
+              <th scope="col">Vaga para Dupla</th>
+              <th colspan="2" scope="col">Vagas para Adversários</th>
+             </tr>
+        </thead>
+        <tbody>
+          <% @schedules.each do |sched|%>
+            <% if (sched.user_id != current_user.id) then %>
+              <% game_owner_name = User.where(id: sched.user_id).pluck(:name) %>
+              <% game_owner_nivel = User.where(id: sched.user_id).pluck(:difficulty) %>
+              <% duo_detail = User.where(id: sched.partner["duo"]).pluck(:name) %>
+              <% opponent_1_detail = User.where(id: sched.partner["opponent_1"]).pluck(:name) %>
+              <% opponent_2_detail = User.where(id: sched.partner["opponent_2"]).pluck(:name) %>
+              <tr>
+                <td scope="row"><%= game_owner_name  %></td>
+                <td scope="row"><%= game_owner_nivel %></td>
+                <td scope="row"><%= sched.date  %></td>
+                <td scope="row"><%= sched.place %></td>
+                <td scope="row"><a class="btn btn-md btn-primary"
+                                  href="#" data-toggle="modal"
+                                  data-target="#modal-alterar-empresas">
+                                  <%= duo_detail  %></a></td>
+                <td scope="row"><a class="btn btn-md btn-warning"
+                                  href="#" data-toggle="modal"
+                                  data-target="#modal-alterar-empresas">
+                                  <%= opponent_1_detail  %></a></td>
+                <td scope="row"><a class="btn btn-md btn-success"
+                                  href="#" data-toggle="modal"
+                                  data-target="#modal-alterar-empresas">
+                                  <%= opponent_2_detail  %></a></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
