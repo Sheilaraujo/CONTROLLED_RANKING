@@ -1,21 +1,57 @@
+<style>
+  td,
+  th {
+      /* border: 1px solid rgb(190, 190, 190); */
+      padding: 10px;
+  }
+
+  td {
+      text-align: center;
+  }
+
+  tr:nth-child(even) {
+      background-color: #eee;
+  }
+
+  th[scope="col"] {
+      /* background-color: #696969; */
+      /* color: #fff; */
+      text-align: center
+  }
+
+  th[scope="row"] {
+      background-color: #d7d9f2;
+  }
+</style>
  <div class="container mt-5">
   <h3>Minha dupla e meus adversários</h3>
-
-    <div class="back-show-5 col-md-6">
-      <ul class="font2">
-        <% @schedules.each do |sched|%>
-          <% if (sched.user_id == current_user.id) then %>
-            <%= duo_detail = User.where(id: sched.partner["duo"]).pluck(:name) %>
-            <%= opponent_1_detail = User.where(id: sched.partner["opponent_1"]).pluck(:name) %>
-            <%= opponent_2_detail = User.where(id: sched.partner["opponent_2"]).pluck(:name) %>
-            <li><%= "Current: #{current_user.id} - User_id:#{sched.user_id} - #{sched.date} - #{sched.place} -
-            Parceiros:
-            Dupla -#{sched.partner["duo"]}
-            Adversário (1) -#{sched.partner["opponent_1"]}
-            Adversário (2) -#{sched.partner["opponent_2"]}" %></li>
+  <div class="col-md-6 font2" style="flex-container">
+    <div class="back-show-5 col-md-6 font2">
+      <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">Data</th>
+              <th scope="col">Local</th>
+              <th scope="col">Dupla</th>
+              <th scope="col">Adversários</th>
+            </tr>
+        </thead>
+        <tbody>
+          <% @schedules.each do |sched|%>
+            <% if (sched.user_id == current_user.id) then %>
+              <% duo_detail = User.where(id: sched.partner["duo"]).pluck(:name) %>
+              <% opponent_1_detail = User.where(id: sched.partner["opponent_1"]).pluck(:name) %>
+              <% opponent_2_detail = User.where(id: sched.partner["opponent_2"]).pluck(:name) %>
+              <% opponents = opponent_1_detail+opponent_2_detail %>
+              <tr>
+                <td> <time datetime="DD-MM-YYYY"><%=sched.date%></time> </td>
+                <td><%= sched.place %></td>
+                <td><%=duo_detail%></td>
+                <td><%= opponents %></td>
+              </tr>
+            <% end %>
           <% end %>
-        <% end %>
-      </ul>
+        </tbody>
+      </table>
     </div>
-
   </div>
