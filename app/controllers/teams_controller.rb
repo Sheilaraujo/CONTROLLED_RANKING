@@ -21,4 +21,7 @@ class TeamsController < ApplicationController
       render :new
     end
   end
+
+  def update
+  end
 end

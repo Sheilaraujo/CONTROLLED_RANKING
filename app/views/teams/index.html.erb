@@ -1,4 +1,4 @@
- <div class="container mt-5">
+<div class="container mt-5">
   <h3>Consultar disponibilidade de jogos de outros jogadores</h3>
   <!-- <div class="col-md-6 font-small" style="flex-container">
     <div class="back-show-6 col-md-6 font2"> -->
@@ -15,7 +15,7 @@
               <th scope="col">Local</th>
               <th scope="col">Vaga para Dupla</th>
               <th colspan="2" scope="col">Vagas para Adversários</th>
-             </tr>
+            </tr>
         </thead>
         <tbody>
           <% @schedules.each do |sched|%>
@@ -30,18 +30,31 @@
                 <td scope="row"><%= game_owner_nivel %></td>
                 <td scope="row"><%= sched.date  %></td>
                 <td scope="row"><%= sched.place %></td>
-                <td scope="row"><a class="btn btn-md btn-primary"
+      <!--  como direciona um botão para uma action de um controler -->
+                <% if duo_detail.blank? %>
+                  <td scope="row"><a class="btn btn-md btn-warning rounded-pill"
+                                  href="#" data-toggle="modal"
+                                  data-target="schedule_update_path">
+                                  VAGA</a></td>
+                <% else %>
+                  <td scope="row"><%= duo_detail  %></td>
+                <% end %>
+                <% if opponent_1_detail.blank? %>
+                  <td scope="row"><a class="btn btn-md btn-success rounded-pill"
                                   href="#" data-toggle="modal"
                                   data-target="#modal-alterar-empresas">
-                                  <%= duo_detail  %></a></td>
-                <td scope="row"><a class="btn btn-md btn-warning"
+                                  VAGA</a></td>
+                  <% else %>
+                    <td scope="row"><%= opponent_1_detail %></td>
+                  <% end %>
+                  <% if opponent_2_detail.blank? %>
+                    <td scope="row"><a class="btn btn-md btn-success rounded-pill"
                                   href="#" data-toggle="modal"
                                   data-target="#modal-alterar-empresas">
-                                  <%= opponent_1_detail  %></a></td>
-                <td scope="row"><a class="btn btn-md btn-success"
-                                  href="#" data-toggle="modal"
-                                  data-target="#modal-alterar-empresas">
-                                  <%= opponent_2_detail  %></a></td>
+                                  VAGA</a></td>
+                  <% else %>
+                    <td scope="row"><%= opponent_2_detail %></td>
+                  <% end %>
               </tr>
             <% end %>
           <% end %>
