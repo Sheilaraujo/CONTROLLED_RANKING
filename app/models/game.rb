@@ -1,6 +1,6 @@
 class Game < ApplicationRecord
   belongs_to :team
 
-  # include PgSearch::model
-  #   multisearchable against: [:date, :place]
+  include PgSearch::Model
+    multisearchable against: [:date, :place]
 end
