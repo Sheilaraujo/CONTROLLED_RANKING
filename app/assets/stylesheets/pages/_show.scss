@@ -84,12 +84,12 @@ h3 {
   font-weight: 700;
 }
 
-body {
-  // background-image: url(https://res.cloudinary.com/dngytfadz/image/upload/v1654361791/ball_goln0x.png);
-  background-color: white;
-  // background-repeat: no-repeat;
+// body {
+//   // background-image: url(https://res.cloudinary.com/dngytfadz/image/upload/v1654361791/ball_goln0x.png);
+//   background-color: white;
+//   // background-repeat: no-repeat;
 
-}
+// }
 
 p {
   margin-left: 20px;
@@ -129,3 +129,7 @@ a:hover {
 //   text-decoration: none;
 //   color: rgb(161, 25, 25);
 // }
+
+body {
+  background-color: beige;
+}
