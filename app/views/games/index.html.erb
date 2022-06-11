@@ -1,1 +1,25 @@
-<h1>Teste</h1>
+
+
+<table class="game">
+          <div id="games">
+            <% @Games.each do |game| %>
+              <% if game.user == current_user %>
+                <% duo_detail = User.where(id: game.partner["duo"]).pluck(:name) %>
+                <% opponent_1_detail = User.where(id: game.partner["opponent_1"]).pluck(:name) %>
+                <% opponent_2_detail = User.where(id: game.partner["opponent_2"]).pluck(:name) %>
+                <% opponents = opponent_1_detail+opponent_2_detail %>
+                <% @results.each do |result| %>
+                  <tr>
+                    <td><%= result.searchable.date %></td>
+                    <td><%= result.searchable.place %></td>
+                    <td><%= game.duo_detail %></td>
+                    <td><%= game.opponents %></td>
+                  </tr>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+      </table>
+    </div>
+  </div>
+</div>

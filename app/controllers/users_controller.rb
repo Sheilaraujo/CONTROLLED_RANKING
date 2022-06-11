@@ -1,5 +1,14 @@
 class UsersController < ApplicationController
- 
+  def index
+    @users = User.all
+    if params[:query].present?
+      @results = PgSearch.multisearch(params[:query])
+    else
+      @results = User.all
+    end
+end
+
+
   def show
     @user = current_user.id
     @schedules = Schedule.all

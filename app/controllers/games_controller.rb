@@ -1,6 +1,11 @@
 class GamesController < ApplicationController
     def index
         @games = Game.all
+        if params[:query].present?
+          @results = PgSearch.multisearch(params[:query])
+        else
+          @results = Game.all
+        end
     end
     
     def show
