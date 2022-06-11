@@ -1,8 +1,14 @@
 class SchedulesController < ApplicationController
+  # def index
+  #   @schedules = Schedule.all
+  #   @users = User.all
   def index
-    @schedules = Schedule.all
-    @users = User.all
-  end
+    if params [:query].present?
+      @results = PgSearch.multisearch(params[:query])
+    else
+      @results = Schedule.all
+    end
+end
 
   def new
     @schedule = Schedule.new

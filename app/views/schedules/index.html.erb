@@ -55,3 +55,31 @@
       </table>
     </div>
   </div>
+
+  <div class="mb-4">
+    <%# so once we hit seacrch here, we will stay o the index page
+    and the number of results will be the resut of our query %>
+    <%= form_tag schedule_path, method: :get do %>
+    <%# query=superman&commit=Search - query here is the name of the input%>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a partner"
+      %>
+      <%= submit_tag "Search", class: "btn btn-primary mt-2" %>
+    <% end %>
+    </div>
+    <%# AFTER ADDING MTS AND TALKING ABOUT THE FORMS STRUCTUTE GO BACK TO SCRIPT %>
+    <%# ============== FORM ENDS HERE ============= %>
+      <div id="schedules">
+        <% @results.each do |result| %>
+          <%# if result.director_id %>
+            <%# <p>Movie by = result.director.last_name</p> %>
+          <%# end %>
+          <h4><%= result.searchable.date %></h4>
+          <p><%= result.searchable.place %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
