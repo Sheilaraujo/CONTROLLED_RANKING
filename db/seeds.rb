@@ -12,7 +12,7 @@
 User.create(password: "123456", email: "cd@g.com", name: "Carla",   last_name: "Dias",
 about_me: "jogo pouco", difficulty: "A", user_score: 0)
 User.create(password: "123456", email: "ml@g.com", name: "Marcelo", last_name: "Lima",
-about_me: "só posso jogar aos sábados", difficulty: "A", user_score: 0)
+about_me: "só posso jogar aos sábados", difficulty: "Iniciante", user_score: 0)
 User.create(password: "123456", email: "lg@g.com", name: "Luis",    last_name: "Gama",
 about_me: "sou de Curitiba", difficulty: "B", user_score: 0)
 User.create(password: "123456", email: "md@g.com", name: "Michele", last_name: "Dantas",
