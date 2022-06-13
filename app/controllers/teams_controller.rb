@@ -21,4 +21,5 @@ class TeamsController < ApplicationController
       render :new
     end
   end
+
 end

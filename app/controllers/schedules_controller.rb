@@ -35,9 +35,13 @@ end
     render :new
   end
 
+  def update
+
+  end
+
   private
 
   def schedule_params
-    params.require(:schedule).permit(:date, :place, :user_id)
+    params.require(:schedule).permit(:date, :place, :user_id, :partner)
   end
 end
