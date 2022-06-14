@@ -2,6 +2,7 @@ class SchedulesController < ApplicationController
   def index
     @schedules = Schedule.all
     @users = User.all
+    @user_schedules = Schedule.where("partner ->'duo' = ?", current_user.id.to_s)
   end
 
   def new
@@ -30,12 +31,22 @@ class SchedulesController < ApplicationController
   end
 
   def update
+    @schedule = Schedule.find(params[:id])
+    @schedule.partner["duo"]  = current_user.id
+    if @schedule.save
+      redirect_to list_schedules_path
+    end
+  end
 
+  def list
+    @teams = Team.all
+    @schedules = Schedule.all
+    @users = User.all
   end
 
   private
 
   def schedule_params
-    params.require(:schedule).permit(:date, :place, :user_id, :partner)
+    params.require(:schedule).permit(:date, :place, :partner, :id, :user_id)
   end
 end
