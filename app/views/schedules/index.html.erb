@@ -25,8 +25,10 @@
 </style>
  <div class="container mt-5">
   <h3>Minha dupla e meus adversários</h3>
-  <div class="col-md-6 font2" style="flex-container">
-    <div class="back-show-5 col-md-6 font2">
+  <div class=" font2" style="flex-container">
+      <%# <div class="back-show-5 col-md-6 font2"> %>
+
+    <div class="font2 m-5">
       <table class="table">
         <thead>
             <tr>
@@ -38,19 +40,57 @@
         </thead>
         <tbody>
           <% @schedules.each do |sched|%>
-            <% if (sched.user_id == current_user.id) then %>
+            <% if sched.user_id == current_user.id %>
               <% duo_detail = User.where(id: sched.partner["duo"]).pluck(:name) %>
               <% opponent_1_detail = User.where(id: sched.partner["opponent_1"]).pluck(:name) %>
               <% opponent_2_detail = User.where(id: sched.partner["opponent_2"]).pluck(:name) %>
-              <% opponents = opponent_1_detail+opponent_2_detail %>
+              <% opponents = opponent_1_detail + opponent_2_detail %>
               <tr>
                 <td> <time datetime="DD-MM-YYYY"><%=sched.date%></time> </td>
                 <td><%= sched.place %></td>
-                <td><%=duo_detail%></td>
-                <td><%= opponents %></td>
+                <td><%=duo_detail.first%></td>
+                <td><%= opponents.first %></td>
               </tr>
             <% end %>
           <% end %>
+        </tbody>
+      </table>
+    </div>
+
+     <div class="col-md-6 font2" style="flex-container">
+      <%# <div class="back-show-5 col-md-6 font2"> %>
+
+    <div class=" col-md-6 font2">
+      <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">Data</th>
+              <th scope="col">Local</th>
+              <th scope="col">Dupla</th>
+              <th scope="col">Adversários</th>
+              <th scope="col">Iniciar Partida</th>
+            </tr>
+        </thead>
+        <tbody>
+          <% @user_schedules.each do |sched|%>
+              <% duo_detail = User.where(id: sched.partner["duo"]).pluck(:name) %>
+              <%= opponent_1_detail = User.where(id: sched.partner["opponent_1"]).pluck(:name) %>
+              <%= opponent_2_detail = User.where(id: sched.partner["opponent_2"]).pluck(:name) %>
+              <% opponents = [opponent_1_detail, opponent_2_detail] unless opponent_2_detail.empty? && opponent_1_detail.empty? %>
+              <tr>
+                <td> <time datetime="DD-MM-YYYY"><%=sched.date%></time> </td>
+                <td><%= sched.place %></td>
+                <td><%= duo_detail.first %></td>
+                <td><%= opponents.first if opponents %></td>
+                <td>
+                  <% if opponents %>
+                    <%= link_to "Start Game", new_team_path(params[:id] = sched), class: "btn btn-success" %>
+                  <% else %>
+                    X
+                  <% end %>
+                  </td>
+              </tr>
+            <% end %>
         </tbody>
       </table>
     </div>
