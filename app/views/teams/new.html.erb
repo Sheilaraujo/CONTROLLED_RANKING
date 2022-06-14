@@ -1,0 +1,22 @@
+<h1 class="d-block">Inicio da Partida:</h1>
+<div class="container d-flex justify-content-around mt-5">
+<%= simple_form_for @team_home do |f| %>
+  <%= f.label "Time de Casa" %>
+  <%= f.input :score, class: "form-group" %>
+  <%= f.input :schedule_id, hidden: true, input_html: {disabled:true, value: @schedule.id } %>
+  <%= f.input :player_1, label: "Jogador 1", input_html: {disabled:true, value: @schedule.user_id}%>
+  <%= f.input :player_2, label: "Jogador 2", input_html: {disabled:true, value: @schedule.partner["duo"]}%>
+<% end %>
+
+
+<%= simple_form_for @team_visitor do |f| %>
+  <%= f.label "Time Visitante" %>
+  <%= f.input :score, class: "form-group" %>
+  <%= f.input :schedule_id, hidden: true, input_html: {disabled:true, value: @schedule.id } %>
+  <%= f.input :player_1, hidden: true, input_html: {disabled:true, value: @schedule.partner["opponent_1"] } %>
+  <%= f.input :player_2, hidden: true, input_html: {disabled:true, value: @schedule.partner["opponent_2"] } %>
+
+<%= f.submit "Finalizar Partida", class: "btn btn-warning w-100 rounded" %>
+</div>
+
+<% end %>

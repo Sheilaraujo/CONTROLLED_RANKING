@@ -1,0 +1,9 @@
+<div data-controller="click2hide">
+    <%= form_with do |form| %>
+        <%= form.text_field :date %>
+        <%= form.text_field :place %>
+        <%= form.text_field :partner %>
+        <%= form.submit %>
+    <% end %>
+    <button data-action="click->click2hide#dismiss">Cancel</button>
+</div>

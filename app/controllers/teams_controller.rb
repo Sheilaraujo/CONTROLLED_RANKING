@@ -10,11 +10,21 @@ class TeamsController < ApplicationController
   end
 
   def new
-    @teams = Teams.new
+    @team_home = Team.new
+    @team_visitor = Team.new
+    @schedule = Schedule.find(params[:format])
+    @team_home.player_1 = @schedule.user_id
+    @team_home.player_2 = @schedule.partner["duo"]
   end
 
   def create
-    @teams = teams.new(teams_params)
+    @team_home = Team.new
+    @team_visitor = Team.new
+    @schedule = Schedule.find(params[:format])
+    @team_home.player_1 = @schedule.user_id
+    @team_home.player_2 = @schedule.partner["duo"]
+    @team_home.score = params[:score]
+    @team_home.schedule_id = params[:schedule_id]
     if @teams.save
       redirect_to teams_path(@teams)
     else
