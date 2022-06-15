@@ -1,3 +1,4 @@
 class Team < ApplicationRecord
-  validates :player_1, :player_2, :place, presence: true
+  STATUS = %w[standby confirmed initialized]
+  validates :player_1, :player_2, :status, :place, presence: true
 end

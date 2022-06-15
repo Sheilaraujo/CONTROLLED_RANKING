@@ -52,7 +52,7 @@
   }
 .back-show-6 {
   background-color: #70E000;
-  height: 250px;
+  height: 220px;
   // width: 900px;
   margin-top: 20px;
   border-radius: 25px;
@@ -63,7 +63,7 @@
 
   .back-show-7 {
     background-color: #08BDBD;
-    height: 200px;
+    height: 220px;
     // width: 900px;
     margin-top: 20px;
     border-radius: 25px;
@@ -71,6 +71,18 @@
     margin-left: 10px;
     margin-bottom: 50px;
     }
+
+
+.back-show-8 {
+      background-color: #b1c24f;
+      height: 400px;
+      // width: 900px;
+      margin-top: 20px;
+      border-radius: 25px;
+      color: white;
+      margin-left: 10px;
+      margin-bottom: 50px;
+      }
 
 // EFF48E
 
@@ -111,6 +123,20 @@ p {
   margin-left: 20px;
   font-family: cabin;
 }
+// .p-center {
+  // .flex-container {
+  //   display: flex;
+  //   background-color: #f1f1f1;
+  // }
+.flex-container > div {
+    color: white;
+    // width: 100px;
+    margin: 10px;
+    text-align: center;
+    // line-height: 75px;
+    // font-size: 30px;
+  }
+
 
 a {
   text-decoration: none;
