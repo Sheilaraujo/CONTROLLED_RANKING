@@ -6,10 +6,10 @@ class User < ApplicationRecord
   validates :name, :last_name, :email, presence: true
   has_many :schedules
 
-  include PgSearch::Model
-  pg_search_scope :search_date_place,
-    against: [:name, :difficuly],
-    using: {
-      tsearch: { prefix: true }
-    }
+  # include PgSearch::Model
+  # pg_search_scope :search_date_place,
+  #   against: [:name, :difficuly],
+  #   using: {
+  #     tsearch: { prefix: true }
+  #   }
 end

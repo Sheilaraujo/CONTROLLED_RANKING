@@ -1,12 +1,4 @@
 class UsersController < ApplicationController
-  def index
-    @users = User.all
-    if params[:query].present?
-      @searchs = User.search_name_dificculty(params[:query])
-    else
-      @searchs = User.all
-    end
-  
   def show
     @user = current_user.id
     @schedules = Schedule.all

@@ -1,3 +1,13 @@
+<div class="mb-4">
+<%= form_tag schedules_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a partner"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary mt-2" %>
+<% end %>
+
 <style>
   td,
   th {
@@ -40,6 +50,11 @@
         </tr>
       </thead>
       <tbody>
+        <% @results&.each do |result| %>
+          <tr>
+            <td><%= result.date %></td>
+            <td><%= result.place %></td>
+        <% end %>
         <% @schedules.each do |sched|%>
           <% if sched.partner["duo"] == current_user.id ||
                 sched.partner["opponent_1"] == current_user.id ||

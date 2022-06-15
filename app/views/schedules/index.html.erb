@@ -6,6 +6,18 @@
     placeholder: "Find a partner"
   %>
   <%= submit_tag "Search", class: "btn btn-primary mt-2" %>
+  <% end %>
+  <div class="row">
+      <div class="col-6 " style="width: 12rem; margin-left: 20px; ">
+      <%= form_tag schedules_path, method: :get do %>
+  <%= date_field_tag "date",
+    params[:date],
+    class: "form-control",
+    placeholder: "Find a partner"
+  %>
+      <%# <%= errors_for(form, :date) %>
+     </div>
+  <%= submit_tag "Search", class: "btn btn-primary mt-2" %>
 <% end %>
 
 <style>
@@ -51,22 +63,12 @@
       </thead>
       <tbody>
       <div id="schedules">
-      <% @results&.each do |result| %>
-            <tr>
-              <td><%= result.date %></td>
-              <td><%= result.place %></td>
-          <% end %>
-      <% @searchs&.each do |search| %>
-            <tr>
-              <td><%= search.name %></td>
-              <td><%= search.difficulty %></td>
-            <%# raise %>
-          <% end %>
         <% @schedules.each do |sched|%>
           <% if sched.user_id == current_user.id %>
             <% duo_name = User.where(id: sched.partner["duo"]).pluck(:name) %>
             <% opponent_1_name = User.where(id: sched.partner["opponent_1"]).pluck(:name) %>
             <% opponent_2_name = User.where(id: sched.partner["opponent_2"]).pluck(:name) %>
+              <tr>
             <tr>
               <td><%= sched.date %></td>
               <td><%= sched.place %></td>
