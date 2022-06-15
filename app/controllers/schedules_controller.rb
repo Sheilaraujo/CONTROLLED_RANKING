@@ -2,7 +2,10 @@ class SchedulesController < ApplicationController
   def index
     @schedules = Schedule.all
     @users = User.all
-    @user_schedules = Schedule.where("partner ->'duo' = ?", current_user.id.to_s)
+    # @user_schedules = Schedule.where("partner ->'duo' = ?", current_user.id.to_s ||
+    # @user_schedules = Schedule.where(partner[duo] = current_user.id.to_s
+    #   || partner[opponent_1] = current_user.id.to_s || partner[opponent_2] = current_user.id.to_s)
+
   end
 
   def new
