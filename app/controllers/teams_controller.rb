@@ -1,8 +1,7 @@
 class TeamsController < ApplicationController
+  before_action :authenticate_user!, only: :index
   def index
-    @teams = Team.all
-    @schedules = Schedule.all
-    @users = User.all
+    @teams = Team.where(player_1: current_user.id)
   end
 
   def show
