@@ -1,3 +1,13 @@
+<div class="mb-4">
+<%= form_tag schedules_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a partner"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary mt-2" %>
+<% end %>
+
 <style>
   td,
   th {
@@ -40,6 +50,18 @@
         </tr>
       </thead>
       <tbody>
+      <div id="schedules">
+      <% @results&.each do |result| %>
+            <tr>
+              <td><%= result.date %></td>
+              <td><%= result.place %></td>
+          <% end %>
+      <% @searchs&.each do |search| %>
+            <tr>
+              <td><%= search.name %></td>
+              <td><%= search.difficulty %></td>
+            <%# raise %>
+          <% end %>
         <% @schedules.each do |sched|%>
           <% if sched.user_id == current_user.id %>
             <% duo_name = User.where(id: sched.partner["duo"]).pluck(:name) %>
