@@ -1,3 +1,25 @@
+<div class="mb-4">
+<%= form_tag schedules_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a partner"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary mt-2" %>
+  <% end %>
+  <div class="row">
+      <div class="col-6 " style="width: 12rem; margin-left: 20px; ">
+      <%= form_tag schedules_path, method: :get do %>
+  <%= date_field_tag "date",
+    params[:date],
+    class: "form-control",
+    placeholder: "Find a partner"
+  %>
+      <%# <%= errors_for(form, :date) %>
+     </div>
+  <%= submit_tag "Search", class: "btn btn-primary mt-2" %>
+<% end %>
+
 <style>
   td,
   th {
@@ -23,103 +45,87 @@
       background-color: #d7d9f2;
   }
 </style>
- <div class="container mt-5">
-  <h3>Minha dupla e meus adversários</h3>
-  <div class=" font2" style="flex-container">
-      <%# <div class="back-show-5 col-md-6 font2"> %>
 
-    <div class="font2 m-5">
-      <table class="table">
-        <thead>
-            <tr>
-              <th scope="col">Data</th>
-              <th scope="col">Local</th>
-              <th scope="col">Dupla</th>
-              <th scope="col">Adversários</th>
-            </tr>
-        </thead>
-        <tbody>
-          <% @schedules.each do |sched|%>
-            <% if sched.user_id == current_user.id %>
-              <% duo_detail = User.where(id: sched.partner["duo"]).pluck(:name) %>
-              <% opponent_1_detail = User.where(id: sched.partner["opponent_1"]).pluck(:name) %>
-              <% opponent_2_detail = User.where(id: sched.partner["opponent_2"]).pluck(:name) %>
-              <% opponents = opponent_1_detail + opponent_2_detail %>
+<div class="container mt-0">
+  <%# <h3>Formação dos times</h3> %>
+  <%# <div class="col-md-6"> %>
+  <div class="back-show-6 font2 m-5" style="overflow-x:auto; overflow-y:auto;">
+    <h3>Minha disponibilidade para jogar</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <td scope="col">Data</td>
+          <td scope="col">Local</td>
+          <td scope="col">Dupla</td>
+          <td scope="col">Adversário</td>
+          <td scope="col">Adversário</td>
+        </tr>
+      </thead>
+      <tbody>
+      <div id="schedules">
+        <% @schedules.each do |sched|%>
+          <% if sched.user_id == current_user.id %>
+            <% duo_name = User.where(id: sched.partner["duo"]).pluck(:name) %>
+            <% opponent_1_name = User.where(id: sched.partner["opponent_1"]).pluck(:name) %>
+            <% opponent_2_name = User.where(id: sched.partner["opponent_2"]).pluck(:name) %>
               <tr>
-                <td> <time datetime="DD-MM-YYYY"><%=sched.date%></time> </td>
-                <td><%= sched.place %></td>
-                <td><%=duo_detail.first%></td>
-                <td><%= opponents.first %></td>
-              </tr>
-            <% end %>
+            <tr>
+              <td><%= sched.date %></td>
+              <td><%= sched.place %></td>
+              <td><%= duo_name.first%></td>
+              <td><%= opponent_1_name.first %></td>
+              <td><%= opponent_2_name.first %></td>
+            </tr>
           <% end %>
-        </tbody>
-      </table>
-    </div>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
-     <div class="col-md-6 font2" style="flex-container">
-      <%# <div class="back-show-5 col-md-6 font2"> %>
-
-    <div class=" col-md-6 font2">
-      <table class="table">
-        <thead>
+  <div class="back-show-7 font2 m-5" style="overflow-x:auto; overflow-y:auto;">
+    <h3>Disponibilidade de outros jogadores</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <td scope="col">Organizador-Nível</td>
+          <td scope="col">Data</td>
+          <td scope="col">Local</td>
+          <td scope="col">Dupla</td>
+          <td scope="col">Adversário</td>
+          <td scope="col">Adversário</td>
+          <td scope="col">Iniciar Partida</td>
+        </tr>
+      </thead>
+      <tbody>
+        <%# <% @user_schedules.each do |sched|%>
+        <% @schedules.each do |sched|%>
+          <%# <%= "Sched.id: #{sched.id} e Duo: #{sched.partner["duo"]} e Ad_1: #{sched.partner["opponent_1"]} e Ad_2: #{sched.partner["opponent_2"]}////" %>
+          <% if sched.partner["duo"] == current_user.id ||
+                sched.partner["opponent_1"] == current_user.id ||
+                sched.partner["opponent_2"] == current_user.id %>
+            <% team_owner_name = User.where(id: sched.user_id).pluck(:name) %>
+            <% team_owner_nivel = User.where(id: sched.user_id).pluck(:difficulty) %>
+            <% duo_name = User.where(id: sched.partner["duo"]).pluck(:name) %>
+            <% opponent_1_name = User.where(id: sched.partner["opponent_1"]).pluck(:name) %>
+            <% opponent_2_name = User.where(id: sched.partner["opponent_2"]).pluck(:name) %>
+            <% opponents = [opponent_1_name, opponent_2_name] unless opponent_2_name.empty? && opponent_1_name.empty? %>
             <tr>
-              <th scope="col">Data</th>
-              <th scope="col">Local</th>
-              <th scope="col">Dupla</th>
-              <th scope="col">Adversários</th>
-              <th scope="col">Iniciar Partida</th>
-            </tr>
-        </thead>
-        <tbody>
-          <% @user_schedules.each do |sched|%>
-              <% duo_detail = User.where(id: sched.partner["duo"]).pluck(:name) %>
-              <%= opponent_1_detail = User.where(id: sched.partner["opponent_1"]).pluck(:name) %>
-              <%= opponent_2_detail = User.where(id: sched.partner["opponent_2"]).pluck(:name) %>
-              <% opponents = [opponent_1_detail, opponent_2_detail] unless opponent_2_detail.empty? && opponent_1_detail.empty? %>
-              <tr>
-                <td> <time datetime="DD-MM-YYYY"><%=sched.date%></time> </td>
-                <td><%= sched.place %></td>
-                <td><%= duo_detail.first %></td>
-                <td><%= opponents.first if opponents %></td>
-                <td>
-                  <% if opponents %>
-                    <%= link_to "Start Game", new_team_path(params[:id] = sched), class: "btn btn-success" %>
+              <td><%= "#{team_owner_name.first} - #{team_owner_nivel.first}"  %></td>
+              <td><%= sched.date %></td>
+              <td><%= sched.place %></td>
+              <td><%= duo_name.first %></td>
+              <td><%= opponent_1_name.first %></td>
+              <td><%= opponent_2_name.first %></td>
+              <td><% if (sched.partner['duo'] != 0 && sched.partner['opponent_1'] !=0 && sched.partner['opponent_2'] != 0)  then %>
+                    <%= link_to "Start Game", new_team_path(params[:id] = sched), class: "btn btn-sm btn-success" %>
                   <% else %>
                     X
                   <% end %>
                   </td>
-              </tr>
-            <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="mb-4">
-    <%# so once we hit seacrch here, we will stay o the index page
-    and the number of results will be the resut of our query %>
-    <%= form_tag schedule_path, method: :get do %>
-    <%# query=superman&commit=Search - query here is the name of the input%>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find a partner"
-      %>
-      <%= submit_tag "Search", class: "btn btn-primary mt-2" %>
-    <% end %>
-    </div>
-    <%# AFTER ADDING MTS AND TALKING ABOUT THE FORMS STRUCTUTE GO BACK TO SCRIPT %>
-    <%# ============== FORM ENDS HERE ============= %>
-      <div id="schedules">
-        <% @results.each do |result| %>
-          <%# if result.director_id %>
-            <%# <p>Movie by = result.director.last_name</p> %>
-          <%# end %>
-          <h4><%= result.searchable.date %></h4>
-          <p><%= result.searchable.place %></p>
+            </tr>
+          <% end %>
         <% end %>
-      </div>
-    </div>
+      </tbody>
+    </table>
   </div>
 </div>

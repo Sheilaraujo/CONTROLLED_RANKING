@@ -1,22 +1,22 @@
-<h1 class="d-block">Inicio da Partida:</h1>
+<h1 class="d-block">Deseja Confirmar a Partida?</h1>
 <div class="container d-flex justify-content-around mt-5">
-<%= simple_form_for @team_home do |f| %>
-  <%= f.label "Time de Casa" %>
-  <%= f.input :score, class: "form-group" %>
-  <%= f.input :schedule_id, hidden: true, input_html: {disabled:true, value: @schedule.id } %>
-  <%= f.input :player_1, label: "Jogador 1", input_html: {disabled:true, value: @schedule.user_id}%>
-  <%= f.input :player_2, label: "Jogador 2", input_html: {disabled:true, value: @schedule.partner["duo"]}%>
-<% end %>
+  <div class="row">
+  <ul class="d-block">
+    <li>Local: <%= @schedule.place %></li>
+  </ul>
+  </div>
 
-
-<%= simple_form_for @team_visitor do |f| %>
-  <%= f.label "Time Visitante" %>
-  <%= f.input :score, class: "form-group" %>
-  <%= f.input :schedule_id, hidden: true, input_html: {disabled:true, value: @schedule.id } %>
-  <%= f.input :player_1, hidden: true, input_html: {disabled:true, value: @schedule.partner["opponent_1"] } %>
-  <%= f.input :player_2, hidden: true, input_html: {disabled:true, value: @schedule.partner["opponent_2"] } %>
-
-<%= f.submit "Finalizar Partida", class: "btn btn-warning w-100 rounded" %>
-</div>
+<%= form_with url: "/teams", method: :post do |f| %>
+  <%= f.label :schedule_id, input_html: {disabled:true, value: @schedule.id } %>
+  <%= f.number_field :schedule_id, disabled:true, value: @schedule.id %>
+  <%= f.label :player_1, label: "Jogador 1" %>
+  <%= f.number_field :schedule_id, disabled:true, value: @schedule.user_id %>
+  <%= f.label :player_2, label: "Jogador 2" %>
+  <%= f.number_field :player_2, label: "Jogador 2", disabled:true, value: @schedule.partner["duo"] %>
+  <%= f.label :player3, label: "Jogador 3" %>
+  <%= f.number_field :player_3, disabled:true, value: @schedule.partner["opponent_1"] %>
+  <%= f.label :playe4, label: "Jogador 4" %>
+  <%= f.number_field :player_4, disabled:true, value: @schedule.partner["opponent_2"] %>
+  <%= f.submit "Confirmar Partida", class: "btn btn-warning w-100 rounded" %>
 
 <% end %>

@@ -1,41 +1,84 @@
-<div class="container mt-5">
-  <h3>Consultar disponibilidade de jogos de outros jogadores</h3>
-  <!-- <div class="col-md-6 font-small" style="flex-container">
-    <div class="back-show-6 col-md-6 font2"> -->
-  <div >
-    <div>
-      <div class="table-responsive">
-      <table class="table table-hover table-sm table-active btn-table">
-        <caption>Lista de jogos de outros jogadores</caption>
-        <thead class="thead-dark">
+<div class="mb-4">
+<%= form_tag schedules_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a partner"%>
+  <%= submit_tag "Search", class: "btn btn-primary mt-2" %>
+  <% end %>
+  <div class="row">
+      <div class="col-6 " style="width: 12rem; margin-left: 20px; ">
+      <%= form_tag schedules_path, method: :get do %>
+  <%= date_field_tag "date",
+    params[:date],
+    class: "form-control",
+    placeholder: "Find a partner"
+  %>
+    </div>
+  <%= submit_tag "Search", class: "btn btn-primary mt-2" %>
+<% end %>
+
+<style>
+  td,
+  th {
+      /* border: 1px solid rgb(190, 190, 190); */
+      padding: 10px;
+  }
+
+  td {
+      text-align: center;
+  }
+
+  tr:nth-child(even) {
+      background-color: #eee;
+  }
+
+  th[scope="col"] {
+      /* background-color: #696969; */
+      /* color: #fff; */
+      text-align: center
+  }
+
+  th[scope="row"] {
+      background-color: #d7d9f2;
+  }
+</style>
+
+<div class="container mt-0">
+  <%# <div class="col-md-6"> %>
+  <div class="back-show-8 font2 m-5" style="overflow-x:auto; overflow-y:auto;">
+    <h3>Formação dos times</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <td scope="col">Organizador-Nível</td>
+          <td scope="col">Data</td>
+          <td scope="col">Local</td>
+          <td scope="col">Vaga para Dupla</td>
+          <td scope="col">Vaga para Adversários</td>
+          <td scope="col"></td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @schedules.each do |sched|%>
+          <% if sched.partner["duo"] == current_user.id ||
+                sched.partner["opponent_1"] == current_user.id ||
+                sched.partner["opponent_2"] == current_user.id %>
+            <% team_owner_name = User.where(id: sched.user_id).pluck(:name) %>
+            <% team_owner_nivel = User.where(id: sched.user_id).pluck(:difficulty) %>
+            <% duo_name = User.where(id: sched.partner["duo"]).pluck(:name) %>
+            <% opponent_1_name = User.where(id: sched.partner["opponent_1"]).pluck(:name) %>
+            <% opponent_2_name = User.where(id: sched.partner["opponent_2"]).pluck(:name) %>
+            <% opponents = [opponent_1_name, opponent_2_name] unless opponent_2_name.empty? && opponent_1_name.empty? %>
             <tr>
-              <th scope="col">Organizador</th>
-              <th scope="col">Nível</th>
-              <th scope="col">Data</th>
-              <th scope="col">Local</th>
-              <th scope="col">Vaga para Dupla</th>
-              <th colspan="2" scope="col">Vagas para Adversários</th>
-            </tr>
-        </thead>
-        <tbody>
-          <%= team_owner_id = "" %>
-          <%= team_owner_name = "" %>
-          <%= team_owner_nivel = "" %>
-          <% @schedules.each do |sched|%>
-            <% if (sched.user_id != current_user.id) then %>
-              <%# <% team_owner_id = User.where(id: sched.user_id).pluck(:id) %>
-              <% team_owner_name = User.where(id: sched.user_id).pluck(:name) %>
-              <% team_owner_nivel = User.where(id: sched.user_id).pluck(:difficulty) %>
-              <% duo_name = User.where(id: sched.partner["duo"]).pluck(:name) %>
-              <% opponent_1_name = User.where(id: sched.partner["opponent_1"]).pluck(:name) %>
-              <% opponent_2_name = User.where(id: sched.partner["opponent_2"]).pluck(:name) %>
-              <tr>
-                <td scope="row"><%= team_owner_name.first  %></td>
-                <td scope="row"><%= team_owner_nivel.first %></td>
-                <td scope="row"><%= sched.date %></td>
-                <td scope="row"><%= sched.place.first %></td>
-      <!--  como direciona um botão para uma action de um controler -->
-                <% if duo_name.blank? || sched.partner[0] == current_user.id %>
+              <td><%= "#{team_owner_name.first} - #{team_owner_nivel.first}"  %></td>
+              <td><%= sched.date %></td>
+              <td><%= sched.place %></td>
+              <td><%= duo_name.first %></td>
+              <td><%= opponent_1_name.first %></td>
+              <td><%= opponent_2_name.first %></td>
+<!-- teste de vaga para dupla INICIO -->
+              <% if duo_name.blank? || sched.partner[0] == current_user.id %>
                   <td scope="row">
                     <button type="button" class="btn btn-info btn-sm btn-success rounded-pill"
                               data-toggle="modal" data-target="#myModal">VAGA</button>
@@ -71,8 +114,6 @@
                                   <td scope="row" style="color: orange"><%= duo_name.first %></td>
                                   <td scope="row"><%= opponent_1_name.first %></td>
                                   <td scope="row"><%= opponent_2_name.first %></td>
-                                  <%= sched.partner[0] = current_user.id  %>
-                                  <%# <%= DUO id = sched.partner %>
                                 </tbody>
                               </table>
                             </div>
@@ -88,37 +129,17 @@
                         </div>
                       </div>
                     </div>
-                    <%# teste fim %>
                   </td>
                   <%# 2- Atualizar a tabela Schedule %>
-                  <%# UPDATE schedules SET partner[duo]= current_user.id WHERE id = %>
-                  <%#  ou
-                  <%# <% return RedirectToRoute(update { controller = "Schedules", action = "Update", id = team_owner_id }); %>
                   <%# 3- Atualizar a página de VAGAS com o nome%>
                 <% else %>
                   <td scope="row"><%= duo_name.first  %></td>
                 <% end %>
-                <% if opponent_1_name.blank? %>
-                  <td scope="row"><a class="btn btn-sm btn-success rounded-pill"
-                                  href="#" data-toggle="modal"
-                                  data-target="#modal-alterar-empresas">
-                                  <%= "VAGA #{team_owner_id}"  %></a></td>
-                  <% else %>
-                    <td scope="row"><%= opponent_1_name.first %></td>
-                  <% end %>
-                  <% if opponent_2_name.blank? %>
-                    <td scope="row"><a class="btn btn-sm btn-success rounded-pill"
-                                  href="#" data-toggle="modal"
-                                  data-target="#modal-alterar-empresas">
-                                  <%= "VAGA #{team_owner_id}"  %></a></td>
-                  <% else %>
-                    <td scope="row"><%= opponent_2_name.first %></td>
-                  <% end %>
+<!-- teste de vaga para dupla FIM -->
               </tr>
-            <% end %>
           <% end %>
-        </tbody>
-      </table>
-    </div>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
