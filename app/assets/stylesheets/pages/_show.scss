@@ -51,7 +51,7 @@
   margin-bottom: 50px;
   }
 .back-show-6 {
-  background-color: #70E000;
+  background-color: #FF9914;
   height: 220px;
   // width: 900px;
   margin-top: 20px;
@@ -87,24 +87,24 @@
 // EFF48E
 
 h2 {
-  color: white;
-  font-family: "montserrat";
-  font-weight: 700;
-  padding: 20px;
-  font-size: 24px;
+  color: white !important;
+  font-family: "montserrat" !important;
+  font-weight: 700 !important;
+  padding: 20px !important;
+  font-size: 24px !important;
 }
 
 .header {
-  color: black;
+  color: black ;
   font-family: "montserrat";
   margin-top: 50px;
   font-weight: 700;
 }
 
 h3 {
-  color: black;
-  font-family: "cabin";
-  font-weight: 700;
+  color: black !important;
+  font-family: "cabin" !important;
+  font-weight: 700 !important;
 }
 
 // body {
@@ -115,8 +115,8 @@ h3 {
 // }
 
 p {
-  margin-left: 20px;
-  font-family: montserrat;
+  margin-left: 20px !important;
+  font-family: montserrat !important;
 }
 
 .p-2 {
@@ -144,7 +144,7 @@ a {
 }
 
 a:hover {
-  text-decoration: none;
+  text-decoration: none ;
   color: white;
 }
 
@@ -168,5 +168,5 @@ a:hover {
 // }
 
 body {
-  background-color: beige;
+  background-color: beige !important;
 }

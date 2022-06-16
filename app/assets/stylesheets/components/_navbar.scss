@@ -1,7 +1,7 @@
 .navbar-lewagon {
-  justify-content: space-between;
-  background: #5386E4;
-  color: white;
+  justify-content: space-between !important;
+  background: #5386E4 !important;
+  color: white !important;
 
 }
 
@@ -14,12 +14,12 @@
 }
 
 .navbar-custom {
-  color: white;
-  text-decoration: none;
-  font-family: cabin;
+  color: white !important;
+  text-decoration: none !important;
+  font-family: cabin !important;
 }
 
 .nav-link {
-  color: white;
-  text-decoration: none;
+  color: white !important;
+  text-decoration: none!important;
 }
