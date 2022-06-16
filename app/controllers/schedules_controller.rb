@@ -3,18 +3,6 @@ class SchedulesController < ApplicationController
   #   @schedules = Schedule.all
   #   @users = User.all
   def index
-<<<<<<< HEAD
-<<<<<<< HEAD
-    if params [:query].present?
-      @results = PgSearch.multisearch(params[:query])
-    else
-      @results = Schedule.all
-    end
-end
-=======
-    @schedules = Schedule.all
-=======
->>>>>>> b3fafde64a9d73b94346e4a639d9ba13083adc3f
     @users = User.all
     if params[:query].present?
       @schedules = Schedule.get_by_place(params[:query])
@@ -24,7 +12,7 @@ end
       @schedules = Schedule.all
     end
   end
->>>>>>> 44e6f1098d4c88873f2e1ebf3c67e3d178576df7
+
 
   def new
     @schedule = Schedule.new
