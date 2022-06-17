@@ -216,6 +216,78 @@ a:hover {
 }
 
 
+.a10:hover {
+  background-color: #60bd03;
+  color: white;
+}
+
+.a12 {
+  font-family: Helvetica;
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  background-color: #009ce4;
+  font-size: 12px;
+  border: 1px solid white;
+  padding: 10px;
+  // padding-left: 5px;
+  // padding-right: 5px;
+  border-radius: 5px;
+  // margin-top: 10px;
+  margin-left: 500px;
+  // margin-right: 10px;
+}
+
+.a10:hover {
+  background-color: #009ce4;
+  color: white;
+}
+
 .p-3 {
   color: black;
+}
+
+
+.a15 {
+  font-family: Helvetica;
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  background-color: #a2cee2;
+  font-size: 12px;
+  border: 1px solid white;
+  padding: 3px;
+  // padding-left: 5px;
+  // padding-right: 5px;
+  border-radius: 5px;
+  // margin-top: 10px;
+  // margin-left: 20px;
+  // margin-right: 10px;
+}
+
+.a15:hover {
+  background-color: #a2cee2;
+  color: white;
+}
+
+.a16 {
+  font-family: Helvetica;
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  background-color: #2ab0ee;
+  font-size: 12px;
+  border: 1px solid white;
+  padding: 3px;
+  // padding-left: 5px;
+  // padding-right: 5px;
+  border-radius: 5px;
+  // margin-top: 10px;
+  // margin-left: 20px;
+  // margin-right: 10px;
+}
+
+.a16:hover {
+  background-color: #2ab0ee;
+  color: white;
 }

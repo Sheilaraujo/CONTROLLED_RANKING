@@ -11,7 +11,7 @@
     </ul>
   </div>
   <div class="row d-flex text-center">
-    <h2>Equipes Formadas:</h2>
+    <h3>Equipes Formadas:</h3>
       <table class="table table-striped mb-2" style="width:55%; margin: 0 auto;">
         <thead>
           <tr>
@@ -63,5 +63,5 @@
   <%= hidden_field_tag :player_2, @schedule.partner["duo"] %>
   <%= hidden_field_tag :player_3, @schedule.partner["opponent_1"] %>
   <%= hidden_field_tag :player_4, @schedule.partner["opponent_2"] %>
-  <%= f.submit "Confirmar Partida", class: "btn btn-warning w-100 rounded" %>
+  <%= f.submit "Confirmar Partida", class: "a12" %>
 <% end %>

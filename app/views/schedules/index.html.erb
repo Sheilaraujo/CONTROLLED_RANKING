@@ -113,9 +113,9 @@
                   <td><%= opponent_1_name.first %></td>
                   <td><%= opponent_2_name.first %></td>
                   <td><% if (sched.partner['duo'] != 0 && sched.partner['opponent_1'] !=0 && sched.partner['opponent_2'] != 0)  then %>
-                        <%= link_to "Confirmar Partida", new_team_path(id: sched.id), class: "btn btn-sm btn-success" %>
+                        <%= link_to "Confirmar Partida", new_team_path(id: sched.id), class: "a16" %>
                       <% else %>
-                        <label class="badge badge-warning py-3">Time não formado</label>
+                        <label class="a15">Time não formado</label>
                       <% end %>
                       </td>
                 </tr>
