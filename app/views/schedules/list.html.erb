@@ -1,5 +1,5 @@
 <div class="mb-4">
-<%= form_tag schedules_path, method: :get do %>
+<%= form_tag list_schedules_path, method: :get do %>
   <%= text_field_tag :query,
     params[:query],
     class: "form-control",
@@ -8,8 +8,9 @@
   <% end %>
   <br>
   <div class="row">
-      <div class="col-6 " style="width: 12rem; margin-left: 5px; ">
-      <%= form_tag schedules_path, method: :get do %>
+
+<div class="col-6 " style="width: 12rem; margin-left: 20px; ">
+<%= form_tag list_schedules_path, method: :get do %>
   <%= date_field_tag "date",
     params[:date],
     class: "form-control",
