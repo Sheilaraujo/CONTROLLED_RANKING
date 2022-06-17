@@ -1,12 +1,5 @@
 <div class="container">
   <% if @teams.present? %>
-    <!-- Mostrar os teams -->
-  <% else %>
-    <h1>Voce ainda nao jogou nenhuma partida</h1>
-  <% end %>
-</div>
-<div class="container">
-  <% if @teams.present? %>
     <% @teams.each do |team| %>
       <div class="card text-center mb-5">
         <div class="card-header">
