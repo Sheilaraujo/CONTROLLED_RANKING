@@ -1,5 +1,9 @@
 class SchedulesController < ApplicationController
+  # def index
+  #   @schedules = Schedule.all
+  #   @users = User.all
   def index
+    @schedules = Schedule.all
     @users = User.all
     if params[:query].present?
       @schedules = Schedule.get_by_place(params[:query])
@@ -9,6 +13,7 @@ class SchedulesController < ApplicationController
       @schedules = Schedule.all
     end
   end
+
 
   def new
     @schedule = Schedule.new
