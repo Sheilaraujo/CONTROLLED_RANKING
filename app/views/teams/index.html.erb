@@ -1,6 +1,20 @@
 <div class="container">
   <% if @teams.present? %>
-    <!-- Mostrar os teams -->
+    <% @teams.each do |team| %>
+      <div class="card text-center mb-5">
+        <div class="card-header">
+
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-success">Iniciar Partida</a>
+        </div>
+        <div class="card-footer text-muted">
+          Partida Iniciada em: <%= team.created_at.strftime("%B %d, %Y") %>
+        </div>
+      </div>
+    <% end %>
   <% else %>
     <h1>Voce ainda nao jogou nenhuma partida</h1>
   <% end %>

@@ -1,22 +1,67 @@
 <h1 class="d-block">Deseja Confirmar a Partida?</h1>
-<div class="container d-flex justify-content-around mt-5">
-  <div class="row">
-  <ul class="d-block">
-    <li>Local: <%= @schedule.place %></li>
-  </ul>
+<div class="container mt-5">
+  <div class="row d-flex">
+    <ul class="d-block d-inline" style="list-style:none;">
+      <li><strong>Local:</strong></li>
+      <li> <%= @schedule.place %></li>
+      <li><strong>Data:</strong></li>
+      <li> <%= @schedule.date.strftime %></li>
+      <li><strong>Autor(a) da Partida:</strong></li>
+      <li><%= User.find(@schedule.user_id).full_name %> </li>
+    </ul>
   </div>
-
-<%= form_with url: "/teams", method: :post do |f| %>
-  <%= f.label :schedule_id, input_html: {disabled:true, value: @schedule.id } %>
-  <%= f.number_field :schedule_id, disabled:true, value: @schedule.id %>
-  <%= f.label :player_1, label: "Jogador 1" %>
-  <%= f.number_field :schedule_id, disabled:true, value: @schedule.user_id %>
-  <%= f.label :player_2, label: "Jogador 2" %>
-  <%= f.number_field :player_2, label: "Jogador 2", disabled:true, value: @schedule.partner["duo"] %>
-  <%= f.label :player3, label: "Jogador 3" %>
-  <%= f.number_field :player_3, disabled:true, value: @schedule.partner["opponent_1"] %>
-  <%= f.label :playe4, label: "Jogador 4" %>
-  <%= f.number_field :player_4, disabled:true, value: @schedule.partner["opponent_2"] %>
+  <div class="row d-flex text-center">
+    <h2>Equipes Formadas:</h2>
+      <table class="table table-striped mb-2" style="width:55%; margin: 0 auto;">
+        <thead>
+          <tr>
+            <th scope="col">Nivel</th>
+            <th scope="col">Time</th>
+            <th scope="col">Jogador</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><%= User.find(@schedule.user_id).difficulty %></th>
+            <td> Time 1 </td>
+            <td><%= User.find(@schedule.user_id).full_name %></td>
+          </tr>
+          <tr>
+            <th scope="row"><%= User.find(@schedule.partner["duo"]).difficulty %>&#32;</th>
+            <td> Time 1 </td>
+            <td><%= User.find(@schedule.partner["duo"]).full_name %></td>
+          </tr>
+        </tbody>
+      </table>
+      <h4 class="py-4 m-0">X</h4>
+      <table class="table table-striped mb-2" style="width:55%; margin: 0 auto;">
+        <thead>
+          <tr>
+            <th scope="col">Nivel</th>
+            <th scope="col">Time</th>
+            <th scope="col">Jogador</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><%= User.find(@schedule.partner["opponent_1"]).difficulty %></th>
+            <td> Time 2 </td>
+            <td><%= User.find(@schedule.partner["opponent_1"]).full_name %></td>
+          </tr>
+          <tr>
+            <th scope="row"><%= User.find(@schedule.partner["opponent_2"]).difficulty %></th>
+            <td> Time 2 </td>
+            <td><%= User.find(@schedule.partner["opponent_2"]).full_name %></td>
+          </tr>
+        </tbody>
+      </table>
+      <label class="text-muted mt-3 mb-5">*Nivel de Dificuldade é calculado a partir do número de partidas ganhas.</label>
+  </div>
+<%= form_for @team do |f| %>
+  <%= hidden_field_tag :schedule_id, @schedule.id %>
+  <%= hidden_field_tag :player_1, @schedule.user_id %>
+  <%= hidden_field_tag :player_2, @schedule.partner["duo"] %>
+  <%= hidden_field_tag :player_3, @schedule.partner["opponent_1"] %>
+  <%= hidden_field_tag :player_4, @schedule.partner["opponent_2"] %>
   <%= f.submit "Confirmar Partida", class: "btn btn-warning w-100 rounded" %>
-
 <% end %>
