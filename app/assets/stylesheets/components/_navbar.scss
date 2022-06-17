@@ -1,17 +1,19 @@
 .navbar-lewagon {
-  justify-content: space-between !important;
-  background: #5386E4 !important;
-  color: white !important;
-  font-family: cabin !important;
+  justify-content: space-between ;
+  background: #5386E4 ;
+  color: white ;
+  font-family: cabin ;
 
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
+  text-decoration: none !important;
 }
 
 .navbar-lewagon .navbar-brand img {
   width: 50px;
+  text-decoration: none !important;
 }
 
 .navbar-custom {
@@ -22,5 +24,11 @@
 
 .nav-link {
   color: white !important;
-  text-decoration: none!important;
+  text-decoration: none !important;
+}
+
+
+.nav-link:hover {
+  text-decoration: none !important;
+  background-color: #5386E4;
 }
