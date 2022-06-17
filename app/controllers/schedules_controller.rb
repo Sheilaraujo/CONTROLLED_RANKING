@@ -51,6 +51,13 @@ class SchedulesController < ApplicationController
     @teams = Team.all
     @schedules = Schedule.all
     @users = User.all
+    if params[:query].present?
+      @schedules = Schedule.get_by_place(params[:query])
+    elsif params[:date].present?
+      @schedules = Schedule.search_date_place(params[:date])
+    else
+      @schedules = Schedule.all
+    end
   end
 
   private
