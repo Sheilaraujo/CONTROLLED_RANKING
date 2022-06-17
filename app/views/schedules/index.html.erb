@@ -1,14 +1,15 @@
 <div class="mb-4">
+<div class="col-6" style="width: 20rem;">
 <%= form_tag schedules_path, method: :get do %>
   <%= text_field_tag :query,
     params[:query],
     class: "form-control",
     placeholder: "Find a partner"%>
-  <%= submit_tag "Search", class: "btn btn-primary mt-2" %>
+  <%= submit_tag "Search", class: "a8" %>
   <% end %>
   <br>
   <div class="row">
-      <div class="col-6 " style="width: 12rem; margin-left: 5px; ">
+      <div class="col-6 " style="width: 22rem; margin-left: 5px; ">
       <%= form_tag schedules_path, method: :get do %>
   <%= date_field_tag "date",
     params[:date],
@@ -16,7 +17,7 @@
     placeholder: "Find a partner"
   %>
       <%# <%= errors_for(form, :date) %>
-  <%= submit_tag "Search", class: "btn btn-primary mt-2" %>
+  <%= submit_tag "Search", class: "a8" %>
 <% end %>
 
 <style>
@@ -112,7 +113,7 @@
                   <td><%= opponent_1_name.first %></td>
                   <td><%= opponent_2_name.first %></td>
                   <td><% if (sched.partner['duo'] != 0 && sched.partner['opponent_1'] !=0 && sched.partner['opponent_2'] != 0)  then %>
-                        <%= link_to "Start Game", new_team_path(params[:id] = sched), class: "btn btn-sm btn-success" %>
+                        <%= link_to "Start Game", new_team_path(params[:id] = sched), class: "a4" %>
                       <% else %>
                         X
                       <% end %>
