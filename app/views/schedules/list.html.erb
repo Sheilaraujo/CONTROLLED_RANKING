@@ -1,24 +1,29 @@
-<div class="mb-4">
-<div class="col-6" style="width: 20rem;">
-<%= form_tag list_schedules_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a partner"%>
-  <%= submit_tag "Search", class: "a9" %>
+<!--    inicio do teste de grid -->
+<div class="container">
+  <%= form_tag schedules_path, method: :get do %>
+    <div class="row">
+      <div class="col">
+        <%= text_field_tag :query, params[:query],
+            class: "form-control", placeholder: "Encontre seu parceiro"%>
+      </div>
+      <div class="col">
+        <%= submit_tag "Search", class: "a16" %>
+      </div>
+    </div>
   <% end %>
-  <br>
-  <div class="row">
-
-<div class="col-6 " style="width: 22rem; margin-left: 5pX; ">
-<%= form_tag list_schedules_path, method: :get do %>
-  <%= date_field_tag "date",
-    params[:date],
-    class: "form-control",
-    placeholder: "Find a partner"
-  %>
-  <%= submit_tag "Search", class: "a9" %>
-<% end %>
+  <%= form_tag schedules_path, method: :get do %>
+    <div class="row">
+      <div class="col">
+        <%= date_field_tag "date", params[:date],
+                      class: "form-control"%>
+      </div>
+      <div class="col">
+        <%= submit_tag "Search", class: "a16" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<!--    fim do teste de grid -->
 
 <style>
   td,
@@ -79,7 +84,7 @@
               <% if duo_name.blank? || sched.partner[0] == current_user.id %>
                   <td scope="row">
                     <button type="button" class="a5"
-                              data-toggle="modal" data-target="#myModal">VAGA</button>
+                              data-toggle="modal" data-target="#myModal">Vaga</button>
                     <div class="modal fade" id="myModal" role="dialog">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -116,8 +121,8 @@
                           <div class="modal-footer">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-                            <%= button_to "Confirmar vaga", schedule_path(sched), class: "a8", method: :post %>
-                            <button type="button" class="a8" data-dismiss="modal">Cancelar</button>
+                            <%= button_to "Confirmar vaga", schedule_path(sched), class: "a16", method: :post %>
+                            <button type="button" class="a16" data-dismiss="modal">Cancelar</button>
                             <%# <button type="button" class="btn btn-sm btn-primary rounded-pill" data-dismiss="modal">Confirmar vaga</button> %>
 
                           </div>
@@ -169,7 +174,7 @@
                             </div>
                           </div>
                           <div class="modal-footer">
-                            <%= button_to "Confirmar vaga", schedule_path(sched), class: "a8", method: :post %>
+                            <%= button_to "Confirmar vaga", schedule_path(sched), class: "a16", method: :post %>
                           </div>
                         </div>
                       </div>
@@ -181,10 +186,10 @@
 <!-- teste de vaga para adversário 1 FIM -->
 
 <!-- teste de vaga para adversário 1 INICIO -->
-              <% if opponent_1_name.blank? || sched.partner[1] == current_user.id %>
+              <% if opponent_2_name.blank? || sched.partner[2] == current_user.id %>
                   <td scope="row">
-                    <button type="button" class="btn btn-info btn-sm btn-success rounded-pill"
-                              data-toggle="modal" data-target="#myModal">VAGA</button>
+                    <button type="button" class="a5"
+                              data-toggle="modal" data-target="#myModal">Vaga</button>
                     <div class="modal fade" id="myModal" role="dialog">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
