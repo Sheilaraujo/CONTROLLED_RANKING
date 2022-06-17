@@ -3,7 +3,7 @@ class Schedule < ApplicationRecord
   validates :date, :place, presence: true
   validates :date, uniqueness: { scope: :place,
     message: "Esta data já foi cadastrada" }
-  
+
   scope :get_by_place, -> (place) { where("schedules.place ILIKE ?", place.capitalize) }
   include PgSearch::Model
   pg_search_scope :search_date_place,
@@ -12,14 +12,5 @@ class Schedule < ApplicationRecord
       tsearch: { prefix: true }
     }
 
-    include PgSearch::model
-    pg_search_scope :search_user,
-    against: [ :date, :place ],
-    associated_against: {
-      user: [ :name, :difficulty ]
-    },
-    using: {
-      tsearch: { prefix: true }
-    }
 
 end
