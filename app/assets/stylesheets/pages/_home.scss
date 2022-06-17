@@ -1,14 +1,14 @@
 // Specific CSS for your home-page
 // Specific CSS for your home-page
 h1 {
-  font-family: "Cabin";
-  font-size: 60px;
-  color: white;
-  margin-top: 200px;
+  font-family: "Cabin" !important;
+  font-size: 60px !important;
+  color: white !important;
+  margin-top: 200px !important;
 }
 
 .content {
-  text-align: center;
+  text-align: center !important;
 }
 
 .content h1{
@@ -18,10 +18,10 @@ h1 {
 }
 
 .content a {
-  font-family: Helvetica;
-  text-decoration: none;
-  display: inline-block;
-  color: white;
+  font-family: Helvetica !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  color: white !important;
   background-color: rgba(0, 0, 0, 0.406) ;
   font-size: 18px;
   // border: 1px solid white;
@@ -76,10 +76,10 @@ a:hover {
 
 
 .a2 {
-  font-family: Helvetica;
-  text-decoration: none;
-  display: inline-block;
-  color: white;
+  font-family: Helvetica !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  color: white !important;
   background-color: rgba(0, 0, 0, 0.257) ;
   font-size: 18px;
   // border: 1px solid white;
@@ -102,7 +102,7 @@ a:hover {
   text-decoration: none;
   display: inline-block;
   color: white;
-  background-color: #08BDBD;
+  background-color: #ff3557;
   font-size: 18px;
   border: 1px solid white;
   padding: 5px;
@@ -115,6 +115,6 @@ a:hover {
 }
 
 .a3:hover {
-  background-color: #09aeae;
+  background-color: rgba(242, 27, 63, 0.459);
   color: white;
 }
