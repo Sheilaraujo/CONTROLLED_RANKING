@@ -34,7 +34,6 @@ class TeamsController < ApplicationController
 
     @team.status = "confirmed"
     @team_visitor.status = "confirmed"
-    byebug
     if @team.save && @team_visitor.save
       redirect_to teams_path
       flash[:notice] = "Partida Confirmada!"
