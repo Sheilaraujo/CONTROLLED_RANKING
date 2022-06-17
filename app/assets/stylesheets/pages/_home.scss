@@ -102,9 +102,9 @@ a:hover {
   text-decoration: none;
   display: inline-block;
   color: white;
-  background-color: #ff3557;
+  background-color: #970c24;
   font-size: 18px;
-  border: 1px solid white;
+  border: 1px solid white !important;
   padding: 5px;
   padding-left: 5px;
   padding-right: 5px;
@@ -115,8 +115,8 @@ a:hover {
 }
 
 .a3:hover {
-  background-color: rgba(242, 27, 63, 0.459);
-  color: white;
+  background-color: #970c24;
+  color: white !important;
 }
 
 .a4 {
