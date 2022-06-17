@@ -19,7 +19,7 @@
                   <%= f.input :date, as: :string, priority: hoje_dmy, label:'Dia', style: "display: block", input_html: {class: "datepicker", value: hoje_ymd } %>
                   <%# <%= errors_for(form, :date) %>
                 </div>
-                <div class="col-6 ">
+                <div class="col-6 "  style="width: 12rem;">
                   <%= f.input :place, include_blank: false, label: 'Local', style: "display: block", collection: ['Rio de Janeiro', 'São Paulo'] %>
                 </div>
               </div>

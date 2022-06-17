@@ -1,22 +1,23 @@
 <div class="mb-4">
+<div class="col-6" style="width: 20rem;">
 <%= form_tag list_schedules_path, method: :get do %>
   <%= text_field_tag :query,
     params[:query],
     class: "form-control",
     placeholder: "Find a partner"%>
-  <%= submit_tag "Search", class: "btn btn-primary mt-2" %>
+  <%= submit_tag "Search", class: "a9" %>
   <% end %>
   <br>
   <div class="row">
 
-<div class="col-6 " style="width: 12rem; margin-left: 5pX; ">
+<div class="col-6 " style="width: 22rem; margin-left: 5pX; ">
 <%= form_tag list_schedules_path, method: :get do %>
   <%= date_field_tag "date",
     params[:date],
     class: "form-control",
     placeholder: "Find a partner"
   %>
-  <%= submit_tag "Search", class: "btn btn-primary mt-2 margin-left:5px" %>
+  <%= submit_tag "Search", class: "a9" %>
 <% end %>
 
 <style>
@@ -79,7 +80,7 @@
 <!-- teste de vaga para dupla INICIO -->
               <% if duo_name.blank? || sched.partner[0] == current_user.id %>
                   <td scope="row">
-                    <button type="button" class="btn btn-info btn-sm btn-success rounded-pill"
+                    <button type="button" class="a5"
                               data-toggle="modal" data-target="#myModal">VAGA</button>
                     <%# teste inicio -
                     <%# 1- Mostrar janela pop-up solicitando uma Confirmação para atualização %>
@@ -121,8 +122,8 @@
                           <%# Cintia trouxe este botão que estava entre modal-title e modal-header para cá, no footer %>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-                            <%= button_to "Confirmar vaga", schedule_path(sched), class: "btn btn-sm btn-primary rounded-pill", method: :post %>
-                            <button type="button" class="btn btn-sm btn-primary rounded-pill" data-dismiss="modal">Cancelar</button>
+                            <%= button_to "Confirmar vaga", schedule_path(sched), class: "a8", method: :post %>
+                            <button type="button" class="a8" data-dismiss="modal">Cancelar</button>
                             <%# <button type="button" class="btn btn-sm btn-primary rounded-pill" data-dismiss="modal">Confirmar vaga</button> %>
                           </div>
                         </div>
