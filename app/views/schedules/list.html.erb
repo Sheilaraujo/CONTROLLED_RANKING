@@ -6,16 +6,17 @@
     placeholder: "Find a partner"%>
   <%= submit_tag "Search", class: "btn btn-primary mt-2" %>
   <% end %>
+  <br>
   <div class="row">
-      <div class="col-6 " style="width: 12rem; margin-left: 20px; ">
-      <%= form_tag list_schedules_path, method: :get do %>
+
+<div class="col-6 " style="width: 12rem; margin-left: 20px; ">
+<%= form_tag list_schedules_path, method: :get do %>
   <%= date_field_tag "date",
     params[:date],
     class: "form-control",
     placeholder: "Find a partner"
   %>
-    </div>
-  <%= submit_tag "Search", class: "btn btn-primary mt-2" %>
+  <%= submit_tag "Search", class: "btn btn-primary mt-2 margin-left:5px" %>
 <% end %>
 
 <style>
@@ -27,29 +28,29 @@
 
   td {
       text-align: center;
+      color: white;
   }
 
   tr:nth-child(even) {
-      background-color: #eee;
+      background-color: #FF9914;
   }
 
   th[scope="col"] {
-      /* background-color: #696969; */
-      /* color: #fff; */
-      text-align: center
+      background-color: #FF9914;
+      color: #fff;
+      text-align: center;
   }
 
   th[scope="row"] {
-      background-color: #d7d9f2;
+      background-color: #FF9914;
   }
 </style>
 
 <div class="container mt-0">
   <%# <div class="col-md-6"> %>
+  <h3>Formação dos times</h3>
   <div class="back-show-8 font2 m-5" style="overflow-x:auto; overflow-y:auto;">
-    <h3>Formação dos times</h3>
     <table class="table">
-      <thead>
         <tr>
           <td scope="col">Organizador-Nível</td>
           <td scope="col">Data</td>
@@ -58,8 +59,6 @@
           <td scope="col">Vaga para Adversários</td>
           <td scope="col"></td>
         </tr>
-      </thead>
-      <tbody>
         <% @schedules.each do |sched|%>
           <% if sched.partner["duo"] == current_user.id ||
                 sched.partner["opponent_1"] == current_user.id ||
