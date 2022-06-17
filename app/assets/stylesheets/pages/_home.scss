@@ -138,7 +138,7 @@ a:hover {
 
 .a4:hover {
   background-color: #009ce4;
-  color: white;
+  color: white !important;
 }
 
 .a5 {
@@ -213,4 +213,9 @@ a:hover {
 .a10:hover {
   background-color: #60bd03;
   color: white;
+}
+
+
+.p-3 {
+  color: black;
 }
