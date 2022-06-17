@@ -74,17 +74,12 @@
               <td><%= "#{team_owner_name.first} - #{team_owner_nivel.first}"  %></td>
               <td><%= sched.date %></td>
               <td><%= sched.place %></td>
-              <td><%= duo_name.first %></td>
-              <td><%= opponent_1_name.first %></td>
-              <td><%= opponent_2_name.first %></td>
+
 <!-- teste de vaga para dupla INICIO -->
               <% if duo_name.blank? || sched.partner[0] == current_user.id %>
                   <td scope="row">
                     <button type="button" class="a5"
                               data-toggle="modal" data-target="#myModal">VAGA</button>
-                    <%# teste inicio -
-                    <%# 1- Mostrar janela pop-up solicitando uma Confirmação para atualização %>
-                    <!-- Modal id=myModal-->
                     <div class="modal fade" id="myModal" role="dialog">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -119,23 +114,123 @@
                             </div>
                           </div>
                           <div class="modal-footer">
-                          <%# Cintia trouxe este botão que estava entre modal-title e modal-header para cá, no footer %>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
 
                             <%= button_to "Confirmar vaga", schedule_path(sched), class: "a8", method: :post %>
                             <button type="button" class="a8" data-dismiss="modal">Cancelar</button>
                             <%# <button type="button" class="btn btn-sm btn-primary rounded-pill" data-dismiss="modal">Confirmar vaga</button> %>
+
                           </div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <%# 2- Atualizar a tabela Schedule %>
-                  <%# 3- Atualizar a página de VAGAS com o nome%>
                 <% else %>
                   <td scope="row"><%= duo_name.first  %></td>
                 <% end %>
 <!-- teste de vaga para dupla FIM -->
+
+<!-- teste de vaga para adversário 1 INICIO -->
+              <% if opponent_1_name.blank? || sched.partner[1] == current_user.id %>
+                  <td scope="row">
+                    <button type="button" class="btn btn-info btn-sm btn-success rounded-pill"
+                              data-toggle="modal" data-target="#myModal">VAGA</button>
+                    <div class="modal fade" id="myModal" role="dialog">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">CONFIRMAÇÃO</h4>
+                          </div>
+                          <div class="modal-body">
+                            <p>Gostaria de confirmar a sua vaga como adversário?</p>
+                            <div class="table-responsive">
+                              <table class="table table-lg table-active">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th scope="col">Organizador</th>
+                                    <th scope="col">Nível</th>
+                                    <th scope="col">Data</th>
+                                    <th scope="col">Local</th>
+                                    <th scope="col">Dupla</th>
+                                    <th colspan="2" scope="col">Adversários</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <td scope="row"><%= team_owner_name.first  %></td>
+                                  <td scope="row"><%= team_owner_nivel.first %></td>
+                                  <td scope="row"><%= sched.date  %></td>
+                                  <td scope="row"><%= sched.place %></td>
+                                  <td scope="row"><%= duo_name.first %></td>
+                                  <% opponent_1_name = User.where(id: current_user.id).pluck(:name) %>
+                                  <td scope="row" style="color: orange"><%= opponent_1_name.first %></td>
+                                  <td scope="row"><%= opponent_2_name.first %></td>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <%= button_to "Confirmar vaga", schedule_path(sched), class: "btn btn-sm btn-primary rounded-pill", method: :post %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                <% else %>
+                  <td scope="row"><%= opponent_1_name.first  %></td>
+                <% end %>
+<!-- teste de vaga para adversário 1 FIM -->
+
+<!-- teste de vaga para adversário 1 INICIO -->
+              <% if opponent_1_name.blank? || sched.partner[1] == current_user.id %>
+                  <td scope="row">
+                    <button type="button" class="btn btn-info btn-sm btn-success rounded-pill"
+                              data-toggle="modal" data-target="#myModal">VAGA</button>
+                    <div class="modal fade" id="myModal" role="dialog">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">CONFIRMAÇÃO</h4>
+                          </div>
+                          <div class="modal-body">
+                            <p>Gostaria de confirmar a sua vaga como adversário?</p>
+                            <div class="table-responsive">
+                              <table class="table table-lg table-active">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th scope="col">Organizador</th>
+                                    <th scope="col">Nível</th>
+                                    <th scope="col">Data</th>
+                                    <th scope="col">Local</th>
+                                    <th scope="col">Dupla</th>
+                                    <th colspan="2" scope="col">Adversários</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <td scope="row"><%= team_owner_name.first  %></td>
+                                  <td scope="row"><%= team_owner_nivel.first %></td>
+                                  <td scope="row"><%= sched.date  %></td>
+                                  <td scope="row"><%= sched.place %></td>
+                                  <td scope="row"><%= duo_name.first %></td>
+                                  <td scope="row"><%= opponent_1_name.first %></td>
+                                  <% opponent_2_name = User.where(id: current_user.id).pluck(:name) %>
+                                  <td scope="row" style="color: orange"><%= opponent_2_name.first %></td>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <%= button_to "Confirmar vaga", schedule_path(sched), class: "btn btn-sm btn-primary rounded-pill", method: :post %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                <% else %>
+                  <td scope="row"><%= opponent_2_name.first  %></td>
+                <% end %>
+<!-- teste de vaga para adversário 2 FIM -->
+
+
               </tr>
           <% end %>
         <% end %>

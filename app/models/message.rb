@@ -5,8 +5,8 @@
 # https://dev.to/drbragg/rails-design-patterns-form-object-4d47
 # ass.: Cintia
 
-class Message
-  include ActiveModel::Model
+class Message < ApplicationRecord
+  # include ActiveModel::Model
 
   attr_accessor :to, :subject, :body
 
