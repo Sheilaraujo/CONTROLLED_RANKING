@@ -102,7 +102,7 @@ a:hover {
   text-decoration: none;
   display: inline-block;
   color: white;
-  background-color: #970c24;
+  background-color: #b41832;
   font-size: 18px;
   border: 1px solid white !important;
   padding: 5px;
@@ -115,7 +115,7 @@ a:hover {
 }
 
 .a3:hover {
-  background-color: #970c24;
+  background-color: #b41832;
   color: white !important;
 }
 
@@ -169,7 +169,7 @@ a:hover {
   display: inline-block;
   color: white;
   background-color: #5386E4;
-  font-size: 15px;
+  font-size: 12px;
   border: 1px solid white;
   padding: 10px;
   // padding-left: 5px;
@@ -184,11 +184,33 @@ a:hover {
   display: inline-block;
   color: white;
   background-color: #5386E4;
-  font-size: 15px;
+  font-size: 12px;
   border: 1px solid white;
   padding: 10px;
   // padding-left: 5px;
   // padding-right: 5px;
   border-radius: 5px;
   margin-top:5px;
+}
+
+.a10 {
+  font-family: Helvetica;
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  background-color: #60bd03;
+  font-size: 12px;
+  border: 1px solid white;
+  padding: 10px;
+  // padding-left: 5px;
+  // padding-right: 5px;
+  border-radius: 5px;
+  // margin-top: 10px;
+  // margin-left: 20px;
+  // margin-right: 10px;
+}
+
+.a10:hover {
+  background-color: #60bd03;
+  color: white;
 }
