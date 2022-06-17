@@ -1,15 +1,17 @@
 <div class="container">
 
   <video id="back-video" autoplay muted loop>
-    <source src="https://res.cloudinary.com/dngytfadz/video/upload/v1654217649/video9_shfdaw.mp4" type="video/mp4">
+    <source src="https://res.cloudinary.com/dngytfadz/video/upload/v1654958855/Videos_jqzvzc.mp4" type="video/mp4">
   </video>
 
   <div class="content margin: 25px">
     <h1>Encontre o parceiro ideal para o seu jogo de beach tennis</h1>
 
 
+     <% if !user_signed_in? %>
       <a class="a2" href="users/sign_in">Login</a>
       <a class="a2" href="users/sign_up">Cadastre-se</a>
+    <% end %>
 
   </div>
 </div>
